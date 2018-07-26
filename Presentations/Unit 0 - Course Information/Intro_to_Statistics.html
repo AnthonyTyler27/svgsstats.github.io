@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to Statistics</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Anthony Tyler" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introduction to Statistics
+### Anthony Tyler
+### 07/25/2018 (updated: 07/26/2018)
+
+---
+
+# General Course Information
+
+--
+
+- Syllabus can be downloaded from [Canvas](https://svgs.instructure.com/courses/203). Read it. 
+
+--
+
+
+- This course will utilize three different online textbooks  
+(which can all be found on [Canvas](https://svgs.instructure.com/courses/203))
+
+--
+
+  - OpenIntro Statistics
+
+--
+
+  - ModernDive:  An Introduction to Statistical and Data Sciences via R
+  
+--
+
+  - R for Data Science
+
+--
+
+- All course content can be found on [Canvas](https://svgs.instructure.com/courses/203).  Be sure to reference the calendar, so you can stay up on due dates.
+
+--
+
+- All communication with the instructor should be done using the Canvas messenger, or e-mail (tylera@svgs.k12.va.us).  You are expected to check Canvas messenger and your e-mail each school day.  
+
+---
+# What will this course be like? 
+
+--
+
+- ### Statistics is **not** like other math classes
+
+--
+
+- ### Spiral approach
+
+--
+
+- ### Variety of small projects throughout the course
+
+---
+# Technology Needs
+
+- We will utilize both ![:scale 5%](https://www.r-project.org/logo/Rlogo.svg) and ![:scale 10%](https://www.rstudio.com/wp-content/uploads/2014/07/RStudio-Logo-Blue-Gradient.png)
+in this course.  
+
+--
+  
+  R is the software that will do most of our statistical heavy lifting.  RStudio is software that will make R a *little* more user friendly for us. 
+  
+--
+
+- We will also use ![:scale 5%](https://banner2.kisspng.com/20180331/bce/kisspng-microsoft-excel-microsoft-project-logo-microsoft-w-excel-5abfec581e5118.3452195915225273201242.jpg) at times.
+
+--
+
+- All software is free for students.  
+  
+  Reference the [SVGS Student Resources](https://svgs.instructure.com/courses/163) page for instructions on how to download Microsoft Office to your personal computer.  
+  
+  Reference the Statistics course page for instructions on how to download and install R and RStudio.
+  
+  Classroom desktops have all needed software, so you don't need your own computer (though it's recommended)
+
+---
+
+class: center,middle, inverse
+
+# Why    ![:scale 8%](https://www.r-project.org/logo/Rlogo.svg)?
+
+---
+class: center
+
+# ![:scale 15%](https://www.r-project.org/logo/Rlogo.svg)
+
+--
+
+### is powerful,
+
+--
+
+### an industry ready tool,
+
+--
+
+### and allows for reproducible research.
+
+---
+
+# What is reproducible research? 
+
+--
+
+&gt; ### “[T]he code and data are assembled in a way so that another group can re-create all of the results (e.g., the figures in a paper). Adopting a workflow that will make your results reproducible will ultimately make your life easier; if a problem (or question) arises somewhere down the line, it will be much easier to correct (or explain).”  
+### - Karl Broman
+
+--
+
+### Why do you think that's important?
+
+---
+
+# Excel
+
+### - Widely used with 750 million users
+
+### - Combines data input, wrangling, modeling, visualization, and output in one document
+
+### - Not reproducible
+
+---
+class: center, inverse, middle
+# What is statistics?
+
+
+
+---
+# What is statistics?
+
+--
+
+- ### Statistics is the **science** of data. 
+
+--
+
+- ### It deals with collecting, summarizing, visualizing, analyzing, predicting, and communicating the data. 
+
+--
+
+- ### Statistics studies *uncertainty*.
+
+---
+# What is Data?
+
+--
+
+- ### Data are (*data* is the plural of *datum*) everywhere!  You will have to make decisions based on data, or evaluate decisions someone else has made based on data in every field. 
+
+--
+
+- ### Data are a set of measurements taken on a set of individual units.
+
+--
+
+- ### Data is typically stored and presented in a dataset, comprised of **variables** measured on **cases**. 
+
+---
+# Countries of the World
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; continent &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; lifeExpectancy &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; population &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; gdp_per_capita &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Afghanistan &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43.828 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 31889923 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 974.5803 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Albania &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 76.423 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3600523 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5937.0295 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Algeria &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 72.301 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33333216 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6223.3675 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Angola &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 42.731 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12420476 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4797.2313 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Argentina &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Americas &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 75.320 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 40301927 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12779.3796 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Oceania &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 81.235 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20434176 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 34435.3674 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Austria &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 79.829 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8199783 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 36126.4927 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bahrain &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 75.635 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 708573 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29796.0483 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bangladesh &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 64.062 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 150448339 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1391.2538 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Belgium &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 79.441 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10392226 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33692.6051 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+---
+# Countries of the World
+
+- Variables are either classified as **categorical** or **quantitative**
+--
+
+  - A **quantitative** variable measures a numerical quantity for each case.
+--
+
+  - A **categorical** variable divides cases into groups.
+--
+
+  - In the countries of the world data set, which variables are categorical and which are quantitative?
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; continent &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; lifeExpectancy &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; population &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; gdp_per_capita &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Afghanistan &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43.828 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 31889923 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 974.5803 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Albania &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 76.423 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3600523 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5937.0295 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Algeria &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 72.301 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33333216 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6223.3675 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Angola &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 42.731 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12420476 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4797.2313 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+  
+---
+# Countries of the World
+![](Intro_to_Statistics_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+---
+class: center
+### Countries of the World
+![](Intro_to_Statistics_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+Red line indicates the USA life expectancy. 
+---
+# Data Around You
+
+- ### Think of a potential dataset that you would be interested in analyzing
+  - #### What are the cases?
+  - #### What are the variables?
+  - #### What interesting questions could it help you answer?
+
+---
+# Homework Assignments
+
+- ### Read the syllabus on Canvas
+- ### Install Microsoft Office (SVGS Student Resources), R, and RStudio.
+    </textarea>
+<script src="remark-latest.min.js"></script>
+<script src="custom.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

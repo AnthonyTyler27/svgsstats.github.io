@@ -1,0 +1,33 @@
+---
+title: "Introduction to RStudio"
+author: "Anthony Tyler"
+#date: "07/25/2018 (updated: `r format(Sys.Date(),'%m/%d/%Y')`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+  #  css: ["default"] #,"tamu"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "custom.js"
+    chakra: "remark-latest.min.js"
+---
+# Emergency Procedures
+
+---
+# ![](https://cdn.datacamp.com/main-app/assets/brand/datacamp-horizontal-rgb-f2e1d0a9be07824aca4d5aeda0975757eb511b52ee3d770b3d6fcffe790d99d5.svg)
+
+--
+
+- This class is supported by DataCamp, the most intuitive learning platform for data science. This platform will allow students to learn R as they learn statistics through a combination of short expert videos and hands-on-the-keyboard exercises.  Students are encouraged to explore the other 100+ courses by expert instructors on topics such as importing data, data visualization or machine learning and learn faster through immediate and personalized feedback on every exercise.
+
+--
+
+- The first DataCamp **HW assignment** is available on [DataCamp](www.datacamp.com).  Check your e-mail for your invitation and get started!
+
+---
+class: inverse, middle, center
+
+# RStudio 101
+

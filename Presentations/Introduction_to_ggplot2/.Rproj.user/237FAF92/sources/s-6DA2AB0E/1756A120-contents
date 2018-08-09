@@ -1,0 +1,8 @@
+library(ggplot2)
+ggplot(faithful,aes(x=eruptions,y=waiting)) + 
+  geom_point(size=3, color="steelblue") +
+  geom_smooth(method="lm",se=FALSE) +
+  labs(x="Eruption time in minutes",
+       y="Time between eruptions in minutes",
+       title="Eruption Time vs Waiting time (in minutes)", 
+       caption="based on data from Yellowstone National Park, Wyoming, USA")

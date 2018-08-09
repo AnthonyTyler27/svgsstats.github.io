@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1533839453849.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "AF2622ED",
+    "lastKnownWriteTime" : 7308604914264011873,
+    "last_content_update" : 1533839453849,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "CC54EE84",
+        "caption" : "mpg",
+        "contentUrl" : "grid_resource/gridviewer.html?env=package%3Aggplot2&obj=mpg&cache_key=CC54EE84",
+        "displayedObservations" : 234,
+        "environment" : "package:ggplot2",
+        "object" : "mpg",
+        "preview" : 0,
+        "totalObservations" : 234,
+        "variables" : 11
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

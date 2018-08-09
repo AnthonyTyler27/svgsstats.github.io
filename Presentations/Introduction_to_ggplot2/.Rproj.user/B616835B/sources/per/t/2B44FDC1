@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1533759560417.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "2B44FDC1",
+    "lastKnownWriteTime" : 7526756744289613669,
+    "last_content_update" : 1533759560417,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "BE937BC2",
+        "caption" : "faithfuld",
+        "contentUrl" : "grid_resource/gridviewer.html?env=package%3Aggplot2&obj=faithfuld&cache_key=BE937BC2",
+        "displayedObservations" : 5625,
+        "environment" : "package:ggplot2",
+        "object" : "faithfuld",
+        "preview" : 0,
+        "totalObservations" : 5625,
+        "variables" : 3
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

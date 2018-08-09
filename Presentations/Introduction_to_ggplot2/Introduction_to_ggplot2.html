@@ -3,6 +3,7 @@
   <head>
     <title>Visualization with ggplot2</title>
     <meta charset="utf-8">
+    <meta name="author" content="3.1 to 3.3 of MD and 3.1 to 3.4 of R4DS" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
@@ -11,6 +12,7 @@
 class: center, middle, inverse, title-slide
 
 # Visualization with ggplot2
+### 3.1 to 3.3 of MD and 3.1 to 3.4 of R4DS
 
 ---
 
@@ -123,8 +125,10 @@ The second argument is a call to aes()
 
 Aesthetics are mappings of visual attributes of the graph to variables.  There are many different aesthetics, but the ones we will most commonly use are: 
 - x, y
-- color, fill
+- color
+- fill
 - linetype
+- size
 - etc.
 
 ---
@@ -158,14 +162,15 @@ Other geoms include:
 class: inverse, center, middle
 # You try!
 
-## See if you can construct a scatterplot between the city miles per gallon and the highway miles per gallon in the mpg dataset.
+### See if you can construct a scatterplot between the city miles per gallon and the highway miles per gallon in the mpg dataset.
 
 ---
+class: inverse, center, middle
 # Try another!
 
-## R has a built-in dataset by the name of `faithful`.  View the help file description of the dataset, and use the View() function to inspect it. 
+### R has a built-in dataset by the name of `faithful`.  View the help file description of the dataset, and use the View() function to inspect it. 
 
-## Construct a scatterplot of eruptions vs waiting
+### Construct a scatterplot of eruptions vs waiting
 
 ---
 # Adding labeling
@@ -177,7 +182,7 @@ We can create a title and x/y-axis labels quite easily!
 ```r
 ggplot(faithful,aes(x=eruptions,y=waiting)) + 
   geom_point() +
-  labs(x="Eruption time in minutes",
+   labs(x="Eruption time in minutes",
        y="Time between eruptions in minutes",
        title="Eruption Time vs Waiting time (in minutes)", 
        caption="based on data from Yellowstone National Park, Wyoming, USA")
@@ -199,6 +204,123 @@ ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
 --
 
 ![](Introduction_to_ggplot2_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+---
+# Aesthetic fun
+
+We can alter the labeling of that color scale too. 
+
+```r
+ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
+  geom_point() + 
+  labs(color = "Class of Vehicle")
+```
+
+![](Introduction_to_ggplot2_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+
+---
+# Aesthetic fun
+
+If you simply wanted to take the regular points and color them differently, then you can set the color inside of the geom_point() layer. Like so: 
+
+
+```r
+ggplot(mpg, aes(x=displ,y=hwy))+
+  geom_point(color="darkblue")
+```
+
+--
+
+![](Introduction_to_ggplot2_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+
+
+---
+# Aesthetic fun
+
+You probably want to know what kind of colors are even available don't you?
+
+It's alot!
+
+See [this link](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)!
+
+You can also make custom colors by utililizing the rgb function. 
+Like this:  `rgb(1,1,0)`
+
+---
+# Aesthetic fun
+
+Size is another attribute that can be helpful to alter at times. 
+
+Just like with color, if you change it within the aes function, then it will map size to a variable in the dataset (you can create points with differing sizes).  If you just want all of the points to be bigger or smaller, then you can set the size to be a constant within the geom_point() layer. 
+
+
+```r
+ggplot(mpg, aes(x=displ,y=hwy))+
+  geom_point(size=4)
+```
+
+![](Introduction_to_ggplot2_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+
+---
+# Aesthetic fun
+
+There's a variable in the dataset that's called `cyl` that represents how many cylinders the car engine has.   See if you can construct a graph that has different sized points based on this variable.   It should look like this one:
+
+![](Introduction_to_ggplot2_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+
+
+---
+# Aesthetic fun
+
+Every aspect of the graph is alterable.  If you're not a fan of the gray background with white lines, then you can easily change this.  `ggplot` has some built in graph themes that perhaps may suit your fancy better. Here's one: 
+
+
+```r
+ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
+  geom_point() + 
+  theme_bw() 
+```
+
+![](Introduction_to_ggplot2_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+
+---
+# Aesthetic fun
+
+Other themes include: 
+- theme_bw()
+- theme_linedraw()
+- theme_light()
+- theme_dark()
+- theme_minimal()
+- theme_classic()
+- or, you can download other R packages that contain additional themes and/or customize individual components of the theme yourself. 
+
+---
+# Curve fitting
+
+At times, we want to show the general shape of the dataset.  The `geom_smooth()` layer will let you do that.   Add this layer to the old faithful scatterplot you made earlier. 
+
+![](Introduction_to_ggplot2_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
+
+---
+# Line fitting
+
+The `geom_smooth()` layer also can fit a line to the data.  Just use `method = lm`  in the call. 
+
+` ... +
+  geom_smooth(method = lm)
+`
+
+---
+# Try your hand at it!
+
+This graph is made using the `iris` dataset built into R.  Perhaps you should take a `View()` of it first. 
+
+![](Introduction_to_ggplot2_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
+
+---
+class:center,middle
+# See what happens when you add a `shape = Species` aesthetic.
     </textarea>
 <script src="remark-latest.min.js"></script>
 <script src="custom.js"></script>

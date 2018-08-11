@@ -1,0 +1,138 @@
+---
+title: "Constructing Other Graphs in ggplot2"
+author: "3.4, 3.5, 3.7, and 3.8 in MD"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default","default-fonts","my_theme.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "custom.js"
+    chakra: "remark-latest.min.js"
+---
+# Foreign-born Population
+
+```{r message=FALSE,echo=FALSE}
+library(ggplot2)
+library(readr)
+state_foreign_born <- read_csv("state_foreign_born.csv")
+```
+
+```{r eval=FALSE}
+  state_foreign_born
+```
+
+```{r echo=FALSE,results="asis"}
+  DT::datatable(state_foreign_born,
+                fillContainer = FALSE, 
+                options = list(pageLength = 6))
+```
+
+---
+# Making a Histogram
+
+The histogram is a popular choice for showing the distribution of a **univariate** dataset. 
+
+```{r message=FALSE, fig.height=4, fig.width=6}
+ggplot(state_foreign_born,aes(x=percent_foreign_born))+
+  geom_histogram()  #<<
+```
+
+---
+# Making a Histogram
+When you ran the command, you perhaps noticed a warning
+message about the bins. `ggplot` will choose to bin your data
+into 30 bins when it makes the histogram, but you can customize
+this.  
+
+```{r message=FALSE, echo=FALSE, fig.height=4, fig.width=6}
+ggplot(state_foreign_born,aes(x=percent_foreign_born))+
+  geom_histogram(binwidth=5)+    #<<
+  scale_x_continuous(limits = c(0,30))
+```
+
+---
+# Making a Histogram
+The default look is a little bland.  You can alter the
+outline of each bar and the fill using the color and fill
+properties. 
+
+```{r fig.height=4,fig.width=6}
+ggplot(state_foreign_born,aes(x=percent_foreign_born))+
+  geom_histogram(binwidth=5,color="white")+
+  scale_x_continuous(limits = c(0,30))
+```
+
+---
+# Making a Histogram
+The default look is a little bland.  You can alter the
+outline of each bar and the fill using the color and fill
+properties. 
+
+```{r fig.height=4,fig.width=6}
+ggplot(state_foreign_born,aes(x=percent_foreign_born))+
+  geom_histogram(binwidth=5,color="white",fill="orangered")+
+  scale_x_continuous(limits = c(0,30))
+```
+
+---
+# Describing Distributions
+
+The purpose of a graph is to help us gain insight about the 
+underlying data.  When looking at graphs of univariate datasets,
+we should consider four main features:
+- Shape
+- Outliers
+- Center
+- Spread
+
+--
+
+### Don't forget your SOCS!
+
+---
+# Shape
+
+- Symmetric
+
+  Can you fold it along a vertical line and have both edges match roughly?
+  
+--
+
+- Skewed and direction of skewness
+
+  The thinner ends of a distribution are called the **tails**.  If one tail stretches out further than the other, it is said to be skewed in the direction of the longer tail. 
+  
+---
+# Approximately Symmetric
+
+```{r echo=FALSE,fig.width=8, fig.height=6}
+df <- tibble::data_frame(x=rnorm(1000,50,5))
+ggplot(df, aes(x=x))+geom_histogram(bins=8,color="white")
+```
+
+---
+# Skewed Left/Right
+
+.pull-left[
+```{r echo=FALSE}
+df <- tibble::data_frame(x=rgeom(n=1000,p=1/8))
+ggplot(df, aes(x=x))+
+  geom_histogram(bins=8,color="white")+
+  ggtitle("Skewed Right")+
+  theme(plot.title=element_text(size=22))
+```
+]
+
+.pull-right[
+```{r echo=FALSE}
+df <- tibble::data_frame(x=50-rgeom(n=1000,p=1/8))
+ggplot(df, aes(x=x))+
+  geom_histogram(bins=8,color="white")+
+  ggtitle("Skewed Left")+
+  theme(plot.title=element_text(size=22))
+```
+]
+

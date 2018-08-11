@@ -195,15 +195,13 @@ ggplot(df,aes(x=x)) +
   scale_x_continuous(breaks=seq(0,100,10)) +
   ggtitle("Bimodal") +
   theme(plot.title=element_text(size=22))
-
 ```
-
 ]
 
---- 
+---
 # Outliers
 
-Do any unusual features stick out? 
+### Do any unusual features stick out? 
 - Are there unusual values? 
   Values that are unsusually high or low. 
   
@@ -215,7 +213,7 @@ Do any unusual features stick out?
 Tell numerically where the center of the data is. 
 
 Common measurements of center are: 
-- Mean (symbolized with either a $$\mu$$ for population mean or $$\overline x$$ for a sample mean)
+- Mean (symbolized with either a $\mu$ for population mean or $\overline x$ for a sample mean)
 - Median
 - Mode (location of peaks)
 

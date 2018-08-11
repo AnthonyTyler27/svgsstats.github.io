@@ -261,6 +261,15 @@ ggplot(faithful,aes(x=eruptions)) +
   geom_dotplot() #<<
 ```
 
+---
+# Boxplots with geom_boxplot()
+
+See if you create a boxplot using the `geom_boxplot()` layer.
+
+```{r fig.width=3,fig.height=4}
+ggplot(iris,aes(y=Sepal.Length)) +
+  geom_boxplot()
+```
 
 
 

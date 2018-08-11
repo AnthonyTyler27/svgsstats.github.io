@@ -1,2 +1,0 @@
-"0","ggplot(faithful,aes(x=eruptions)) + "
-"0","  geom_dotplot(binwidth=0.05)"

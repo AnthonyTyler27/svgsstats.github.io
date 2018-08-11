@@ -1,0 +1,8 @@
+"0","ggplot(faithful,aes(x=eruptions,y=..density..)) + "
+"0","  geom_histogram(color=""white"",bins=14) +"
+"0","  geom_density(fill=""darkred"",alpha=0.5)"
+"2","Warning message:
+"
+"2","In prose_index(x) :"
+"2"," Code fences are not balanced
+"

@@ -19,7 +19,7 @@ In this notebook, we will be learning our way around a few more plotting functio
 
 First, run the code in this chunk, so that the data for these problems will be present. 
 ```{r message=FALSE}
-source("https://svgsstats.github.io/ggplot2_other_graphs/load.R")
+source("https://svgsstats.github.io/class.R")
 ```
 
 There's a dataset that has now been automatically loaded into your R session called `state_foreign_born`.  This dataset has data from the 2016 American Community Survey and shows the percentage of people from each state that were born in a foreign country. 

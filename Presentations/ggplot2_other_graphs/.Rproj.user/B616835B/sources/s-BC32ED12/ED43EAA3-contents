@@ -1,0 +1,134 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r message=FALSE}
+library(dplyr)
+library(ggplot2)
+ggplot(mpg,aes(x=cty,y=hwy)) +
+  geom_point()
+```
+
+In this notebook, we will be learning our way around a few more plotting functions and applying some of our `dplyr` knowledge as well. 
+
+## Exploring the Data
+
+First, run the code in this chunk, so that the data for these problems will be present. 
+```{r message=FALSE}
+source("https://svgsstats.github.io/ggplot2_other_graphs/load.R")
+```
+
+There's a dataset that has now been automatically loaded into your R session called `state_foreign_born`.  This dataset has data from the 2016 American Community Survey and shows the percentage of people from each state that were born in a foreign country. 
+
+Before working with any dataset, it's a good idea to take a look at it.  Earlier, we had used the `View()` command to do this, but this time let's do it a little differently.  If you type the command `state_foreign_born`, then you'll get a look at the dataset.  Run the chunk below to take a peak at the dataset. 
+
+```{r}
+state_foreign_born
+```
+
+Another way to take a quick peak at the dataset is with the `head()` function.  This function simply shows you the first 6 rows of the dataset.  Just put the dataset name inside of the parentheses. Try that in the chunk below.  
+
+```{r}
+
+```
+
+It may be that you want to learn a bit about which states have the highest percentage of people who are foreign born.   You can do this with the `dplyr` package's `arrange` function. See if you can edit the chunk below to do this. Feel free to reference the **Tidyverse for Beginners** cheat sheet. 
+
+
+```{r}
+state_foreign_born
+  
+```
+
+# Making a Histogram
+The histogram is a popular choice for showing the distribution of a **univariate** dataset. 
+
+Utilizing the `tidyverse` cheatsheet, finish the R code below to construct a histogram of the `state_foreign_born` dataset. You only need to supply a mapping for the x-axis. 
+
+```{r}
+ggplot(            ) +
+  geom_
+```
+
+`ggplot` by default will separate your data into 30 bins.  You can customize this by setting the `bins=` argument inside of your geom_histogram() function layer.   Construct a histogram with 8 bins below. 
+
+```{r}
+
+
+
+```
+
+Instead of setting the number of bins, you may find it useful to set the width of each bin instead.  You can do this with the `binwidth=` argument.  Get rid of your `bins=` argument and construct a histogram with a bin width of 5 below. 
+
+```{r}
+ 
+
+```
+
+Instead of choosing the `binwidth` you could utilize a `breaks=` argument to get the plot to have bins exactly over the range you specify.    
+
+The breaks argument takes a vector input (more about those on a later day).  For right now, we'll just use the `seq(start,end,skip)` function to do this. Run the code below to see how it works. 
+
+```{r}
+ggplot(state_foreign_born, aes(x=percent_foreign_born)) +
+  geom_histogram(breaks=seq(0,30,4))
+```
+
+The `seq(0,30,4)` command simply spits out a list of numbers starting at 0 and ending at 30 while skipping every 4, so it would be `0,4,8,12,etc`.
+
+
+It's worth noting that a histogram may look differently depending on your choice of bins.  This can be a big drawback to the histogram at times.  A *density function* is sometimes used to cure this problem.   To see a density function, get rid of the geom_histogram() layer and add a geom_density() layer instead. 
+
+```{r}
+ggplot(state_foreign_born, aes(x=percent_foreign_born)) +
+  
+
+```
+
+This eliminates the drawback of the histogram, but perhaps is a little harder for a layperson to understand.   
+
+We will stick with the histogram for the time being. 
+
+---
+The default look of the histogram is a bit bland.  
+
+We can edit the colors of the histogram by referencing the `color=` and `fill=` arguments.   See if you can make a histogram with a white outline and a dark red fill.  Edit the chunk appropriately below. 
+
+```{r}
+ggplot(state_foreign_born, aes(x=percent_foreign_born)) +
+  geom_histogram(breaks=seq(0,30,4))
+```
+
+The y-axis on the histogram is by default `count` meaning that we can see the actual raw number of elements in the dataset that fall in each bin.  It is useful at times to have the y-axis be `density` which will better allow ut to see the *percentage* of the dataset that falls in each bin.   To do this add the following in your aes() function call.  `y=..density..`
+
+```{r}
+ggplot(state_foreign_born, aes(x=percent_foreign_born)) +
+  geom_histogram(breaks=seq(0,30,4))
+```
+
+
+
+# Boxplots
+
+A boxplot (perhaps known as a box-and-whisker plot to you) is another useful graphic that us statisticians make use of sometimes.   In ggplot, boxplots are always oriented vertically, so the variable we wish to construct a boxplot of should be mapped to the y-variable in the `aes()` function. 
+
+Make a boxplot of the `state_foreign_born` dataset below.   Reference your **Tidyverse for Beginners** cheat sheet as needed. 
+
+```{r}
+
+```
+
+---
+
+One really useful part of a boxplot is that it allows us to compare multiple datasets to each other.   For instance, if we wanted to quickly compare the gas mileage of the different `class` vehicles in the `mpg` dataset, we can do that with the boxplot with the code below. 
+
+```{r}
+ggplot(mpg, aes(x=class,y=hwy)) +
+  geom_boxplot()
+```
+
+# Pause Here

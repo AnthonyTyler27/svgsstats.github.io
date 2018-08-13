@@ -12,6 +12,11 @@ output:
       beforeInit: "custom.js"
     chakra: "remark-latest.min.js"
 ---
+class: inverse,center,middle
+
+# In your console, type:  `source("https://svgsstats.github.io/class.R")`
+
+---
 # Foreign-born Population
 
 ```{r message=FALSE,echo=FALSE}

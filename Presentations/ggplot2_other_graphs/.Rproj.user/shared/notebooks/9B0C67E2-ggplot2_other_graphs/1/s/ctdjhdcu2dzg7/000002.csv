@@ -1,3 +1,0 @@
-"0","ggplot(state_foreign_born,aes(x=percent_foreign_born))+"
-"0","  geom_histogram(breaks=seq(0,30,5))+"
-"0","  geom_density() #<<"

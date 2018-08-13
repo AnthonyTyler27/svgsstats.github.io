@@ -1,0 +1,4 @@
+"0","```r
+ggplot(state_foreign_born, aes(x=percent_foreign_born)) +
+  geom_histogram(breaks=seq(0,30,4))
+```"

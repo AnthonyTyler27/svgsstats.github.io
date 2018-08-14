@@ -5,4 +5,4 @@ installPackages("readr")
 library(readr)
 
 #load the dataset
-state_foreign_born <- read_csv("state_foreign_born.csv")
+state_foreign_born <- read_csv("https://svgsstats.github.io/Presentations/ggplot2_other_graphs/state_foreign_born.csv")

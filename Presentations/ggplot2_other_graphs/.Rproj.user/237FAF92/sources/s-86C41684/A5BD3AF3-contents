@@ -1,4 +1,0 @@
-library(ggplot2)
-ggplot(faithful, aes(y=eruptions))+
-  geom_boxplot()
-  

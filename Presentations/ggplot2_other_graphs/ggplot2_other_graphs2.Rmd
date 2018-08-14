@@ -109,7 +109,7 @@ ggplot(df, aes(x=x))+
 # Shape - Skew/Symmetry? 
 
 How would you describe the percentage of foreign born citizens dataset in terms of skew/symmetry?
-<b> Hello </b>
+
 .center[
 ```{r echo=FALSE, fig.width=7, fig.height=5}
 thePlot
@@ -146,7 +146,16 @@ ggplot(df,aes(x=x)) +
   theme(plot.title=element_text(size=22))
 ```
 ]
+---
+# Shape - Modality 
 
+Is there a single central peak or several separated peaks?  You should identify the location of them. 
+
+.center[
+```{r echo=FALSE, fig.width=7, fig.height=5}
+thePlot
+```
+]
 ---
 # Outliers
 
@@ -179,8 +188,7 @@ Are values tightly clustered around the center or spread out?
 # Describe the Distribution
 
 ```{r fig.height=4,fig.width=6, echo=FALSE}
-ggplot(state_foreign_born,aes(x=percent_foreign_born))+
-  geom_histogram(breaks=seq(0,30,5),color="white")
+thePlot
 ```
 
 ---

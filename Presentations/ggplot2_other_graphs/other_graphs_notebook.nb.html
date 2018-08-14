@@ -180,8 +180,12 @@ $(document).ready(function () {
 <p>Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Ctrl+Shift+Enter</em>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkoZ2dwbG90MilcbmdncGxvdChtcGcsYWVzKHg9Y3R5LHk9aHd5KSkgK1xuICBnZW9tX3BvaW50KClcbmBgYFxuYGBgIn0= -->
-<p><code>r</code>r library(dplyr) library(ggplot2) ggplot(mpg,aes(x=cty,y=hwy)) + geom_point()</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkoZ2dwbG90MilcbmdncGxvdChtcGcsYWVzKHg9Y3R5LHk9aHd5KSkgK1xuICBnZW9tX3BvaW50KClcbmBgYFxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r</p>
+<pre class="r"><code>library(dplyr)
+library(ggplot2)
+ggplot(mpg,aes(x=cty,y=hwy)) +
+  geom_point()</code></pre>
 <pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -201,8 +205,9 @@ $(document).ready(function () {
 <p>Before working with any dataset, it’s a good idea to take a look at it. Earlier, we had used the <code>View()</code> command to do this, but this time let’s do it a little differently. If you type the command <code>state_foreign_born</code>, then you’ll get a look at the dataset. Run the chunk below to take a peak at the dataset.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3RhdGVfZm9yZWlnbl9ib3JuXG5gYGBcbmBgYCJ9 -->
-<p><code>r</code>r state_foreign_born</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxuc3RhdGVfZm9yZWlnbl9ib3JuXG5gYGBcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r</p>
+<pre class="r"><code>state_foreign_born</code></pre>
 <pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -215,8 +220,10 @@ $(document).ready(function () {
 <p>It may be that you want to learn a bit about which states have the highest percentage of people who are foreign born. You can do this with the <code>dplyr</code> package’s <code>arrange</code> function. See if you can edit the chunk below to do this. Feel free to reference the <strong>Tidyverse for Beginners</strong> cheat sheet.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc3RhdGVfZm9yZWlnbl9ib3JuXG4gIFxuYGBgXG5gYGAifQ== -->
-<p><code>r</code>r state_foreign_born</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxuc3RhdGVfZm9yZWlnbl9ib3JuXG4gIFxuYGBgXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r</p>
+<pre class="r"><code>state_foreign_born
+  </code></pre>
 <pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -228,8 +235,10 @@ $(document).ready(function () {
 <p>Utilizing the <code>tidyverse</code> cheatsheet, finish the R code below to construct a histogram of the <code>state_foreign_born</code> dataset. You only need to supply a mapping for the x-axis.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZ2dwbG90KCAgICAgICAgICAgICkgK1xuICBnZW9tX1xuYGBgXG5gYGAifQ== -->
-<p><code>r</code>r ggplot( ) + geom_</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxuZ2dwbG90KCAgICAgICAgICAgICkgK1xuICBnZW9tX1xuYGBgXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r</p>
+<pre class="r"><code>ggplot(            ) +
+  geom_</code></pre>
 <pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -248,8 +257,10 @@ $(document).ready(function () {
 <p>The breaks argument takes a vector input (more about those on a later day). For right now, we’ll just use the <code>seq(start,end,skip)</code> function to do this. Run the code below to see how it works.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZ2dwbG90KHN0YXRlX2ZvcmVpZ25fYm9ybiwgYWVzKHg9cGVyY2VudF9mb3JlaWduX2Jvcm4pKSArXG4gIGdlb21faGlzdG9ncmFtKGJyZWFrcz1zZXEoMCwzMCw0KSlcbmBgYFxuYGBgIn0= -->
-<p><code>r</code>r ggplot(state_foreign_born, aes(x=percent_foreign_born)) + geom_histogram(breaks=seq(0,30,4))</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxuZ2dwbG90KHN0YXRlX2ZvcmVpZ25fYm9ybiwgYWVzKHg9cGVyY2VudF9mb3JlaWduX2Jvcm4pKSArXG4gIGdlb21faGlzdG9ncmFtKGJyZWFrcz1zZXEoMCwzMCw0KSlcbmBgYFxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r</p>
+<pre class="r"><code>ggplot(state_foreign_born, aes(x=percent_foreign_born)) +
+  geom_histogram(breaks=seq(0,30,4))</code></pre>
 <pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -258,8 +269,11 @@ $(document).ready(function () {
 <p>It’s worth noting that a histogram may look differently depending on your choice of bins. This can be a big drawback to the histogram at times. A <em>density function</em> is sometimes used to cure this problem. To see a density function, get rid of the geom_histogram() layer and add a geom_density() layer instead.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZ2dwbG90KHN0YXRlX2ZvcmVpZ25fYm9ybiwgYWVzKHg9cGVyY2VudF9mb3JlaWduX2Jvcm4pKSArXG4gIFxuXG5gYGBcbmBgYCJ9 -->
-<p><code>r</code>r ggplot(state_foreign_born, aes(x=percent_foreign_born)) +</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYGBgclxuZ2dwbG90KHN0YXRlX2ZvcmVpZ25fYm9ybiwgYWVzKHg9cGVyY2VudF9mb3JlaWduX2Jvcm4pKSArXG4gIFxuXG5gYGBcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r</p>
+<pre class="r"><code>ggplot(state_foreign_born, aes(x=percent_foreign_born)) +
+  
+</code></pre>
 <pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->

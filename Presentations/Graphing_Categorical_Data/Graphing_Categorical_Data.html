@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Graphing Categorical Data</title>
+    <meta charset="utf-8">
+    <meta name="author" content="1.7 in OI and 3.8 in MD" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my_theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Graphing Categorical Data
+## Bars, Pies, and How to Make Terrible Graphs
+### 1.7 in OI and 3.8 in MD
+
+---
+
+# What is Categorical Data?
+
+**Categorical Variables** place individuals into one of several groups or categories. 
+- The *values* of a categorical variable are labels for the different categories. 
+
+- The *distribution* of a categorical variable lists the count or percent of individuals who fall into each category. 
+
+---
+# Two Types of Categorical Data
+
+- **Ordinal** data is data that is categorical in nature, but has a natural order.  The differences between levels may not be known.   
+
+  ![:scale 30%](likert.jpg)
+
+
+- **Nominal** data is data that has no distinct order. 
+
+  What is your favorite pizza topping?
+
+---
+# Frequency Table
+
+Car Accidents in Staunton/Waynesboro/Augusta County in 2017 according to the TREDS database. 
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; City/County &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Crash Count &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Staunton City &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 465 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Waynesboro City &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 367 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Augusta County &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1254 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Total &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2064 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+# Relative Frequency Table
+
+.pull-left[
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; City/County &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Relative Frequency &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Staunton City &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22.29 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Waynesboro City &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17.59 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Augusta County &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 60.12 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+--
+
+.pull-right[
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; City/County &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Accidents per 1000 people &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Staunton City &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19.08632 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Waynesboro City &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.76794 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Augusta County &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.87434 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+---
+# Displaying Categorical Data
+
+The main tool for displaying categorical data is the bar graph.  
+
+![](Graphing_Categorical_Data_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+---
+# Bar Graphs
+
+### - Bars should have equal widths
+### - There should be gaps between bars
+### - Never use 3D bar charts
+### - Always label the axes
+### - The y-axis may contain counts or percentages
+### - The y-axis should start at 0 . 
+---
+class:center
+# Side by Side Bar Graph
+
+![:scale 150%](https://peltiertech.com/images/2013-03/LitMFTot.png)
+---
+# This is a pie chart
+![](Graphing_Categorical_Data_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+
+Never use it. 
+
+---
+
+![:scale 130%](https://i0.wp.com/blog.cayenneapps.com/wp-content/uploads/2015/01/How-to-save-yourself-from-inproductive-meetings.png?w=750&amp;ssl=1)
+
+---
+class:center,middle
+![](https://i1.wp.com/flowingdata.com/wp-content/uploads/2008/09/Pie-I-have-Eaten.jpg?w=500&amp;ssl=1)
+---
+# Seriously though, don't use them. 
+
+### The only case where they *may* be useful is when you want to emphasize each category's relation to the whole.  You should never use them when you wish to compare the relative sizes of slices. 
+
+---
+# Graphs that Deceive
+
+.pull-left[
+![](deceptive1.png)
+]
+
+--
+
+.pull-right[
+![](deceptive2.png)
+]
+
+---
+class:center
+# Dumb Graph
+
+![:scale 65%](https://i.redditmedia.com/midpZZS0SODUS9tx3PGqkMsxRsnsRO_Cv8_2Q73XJcA.jpg?fit=crop&amp;crop=faces%2Centropy&amp;arh=2&amp;w=640&amp;s=ef3af312c8c422dfd2151af69c5a5561)
+
+---
+# The Billion Pound-o-gram
+
+![:scale 90%](https://infobeautiful4.s3.amazonaws.com/2015/05/1276_billion_pound_o_gram.png)
+
+---
+# The Billion Pound-o-gram reconfigured
+
+![:scale 90%](http://www.perceptualedge.com/blog/wp-content/uploads/2011/06/redesign-of-billion-pound-o-gram.jpg)
+
+---
+# Graph Design IQ Test
+
+[Graph Design IQ Test](https://www.perceptualedge.com/files/GraphDesignIQ.html)
+    </textarea>
+<script src="remark-latest.min.js"></script>
+<script src="custom.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

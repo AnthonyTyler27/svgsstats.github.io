@@ -1,0 +1,157 @@
+---
+title: "Graphing Categorical Data"
+subtitle: "Bars, Pies, and How to Make Terrible Graphs"
+author: "1.7 in OI and 3.8 in MD"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default","default-fonts","my_theme.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "custom.js"
+    chakra: "remark-latest.min.js"
+---
+# What is Categorical Data?
+
+**Categorical Variables** place individuals into one of several groups or categories. 
+- The *values* of a categorical variable are labels for the different categories. 
+
+- The *distribution* of a categorical variable lists the count or percent of individuals who fall into each category. 
+
+---
+# Two Types of Categorical Data
+
+- **Ordinal** data is data that is categorical in nature, but has a natural order.  The differences between levels may not be known.   
+
+  ![:scale 30%](likert.jpg)
+
+
+- **Nominal** data is data that has no distinct order. 
+
+  What is your favorite pizza topping?
+
+---
+# Frequency Table
+
+Car Accidents in Staunton/Waynesboro/Augusta County in 2017 according to the TREDS database. 
+```{r echo=FALSE}
+library(tibble)
+treds <- tibble(Location = c("Staunton City","Waynesboro City","Augusta County"),Crashes = c(465,367,1254))
+treds<-add_row(treds,Location="Total",Crashes=2064)
+colnames(treds)[1] = "City/County"
+colnames(treds)[2] = "Crash Count"
+knitr::kable(treds,format='html')
+```
+
+---
+# Relative Frequency Table
+
+.pull-left[
+```{r echo=FALSE, fig.width=8,fig.height=5}
+library(dplyr,warn.conflicts = FALSE)
+treds <- head(treds,3)
+treds <- treds %>% mutate(`Relative Frequency` = round(`Crash Count`/sum(`Crash Count`)*100,2)) 
+knitr::kable(treds %>% select(-`Crash Count`),format="html")
+
+```
+]
+
+--
+
+.pull-right[
+```{r echo=FALSE}
+treds<-add_column(treds,People=c(24363,21887,74314))
+
+treds<-treds %>% mutate(`Accidents per 1000 people` = `Crash Count`/People*1000) 
+
+knitr::kable(
+treds %>% select(`City/County`,`Accidents per 1000 people`),
+format="html")
+
+```
+]
+
+---
+# Displaying Categorical Data
+
+The main tool for displaying categorical data is the bar graph.  
+
+```{r echo=FALSE, fig.width=8, fig.height=6}
+
+library(ggplot2)
+library(ggthemes)
+ggplot(treds,aes(x=`City/County`,y=`Accidents per 1000 people`)) + geom_bar(stat="identity") + theme_fivethirtyeight()
+
+```
+
+---
+# Bar Graphs
+
+### - Bars should have equal widths
+### - There should be gaps between bars
+### - Never use 3D bar charts
+### - Always label the axes
+### - The y-axis may contain counts or percentages
+### - The y-axis should start at 0 . 
+---
+class:center
+# Side by Side Bar Graph
+
+![:scale 150%](https://peltiertech.com/images/2013-03/LitMFTot.png)
+---
+# This is a pie chart
+```{r echo=FALSE,fig.height=6,fig.width=9}
+
+pie(treds$`Accidents per 1000 people`,labels=treds$`City/County`)
+
+```
+
+Never use it. 
+
+---
+
+![:scale 130%](https://i0.wp.com/blog.cayenneapps.com/wp-content/uploads/2015/01/How-to-save-yourself-from-inproductive-meetings.png?w=750&ssl=1)
+
+---
+class:center,middle
+![](https://i1.wp.com/flowingdata.com/wp-content/uploads/2008/09/Pie-I-have-Eaten.jpg?w=500&ssl=1)
+---
+# Seriously though, don't use them. 
+
+### The only case where they *may* be useful is when you want to emphasize each category's relation to the whole.  You should never use them when you wish to compare the relative sizes of slices. 
+
+---
+# Graphs that Deceive
+
+.pull-left[
+![](deceptive1.png)
+]
+
+--
+
+.pull-right[
+![](deceptive2.png)
+]
+
+---
+class:center
+# Dumb Graph
+
+![:scale 65%](https://i.redditmedia.com/midpZZS0SODUS9tx3PGqkMsxRsnsRO_Cv8_2Q73XJcA.jpg?fit=crop&crop=faces%2Centropy&arh=2&w=640&s=ef3af312c8c422dfd2151af69c5a5561)
+
+---
+# The Billion Pound-o-gram
+
+![:scale 90%](https://infobeautiful4.s3.amazonaws.com/2015/05/1276_billion_pound_o_gram.png)
+
+---
+# The Billion Pound-o-gram reconfigured
+
+![:scale 90%](http://www.perceptualedge.com/blog/wp-content/uploads/2011/06/redesign-of-billion-pound-o-gram.jpg)
+
+---
+# Graph Design IQ Test
+
+[Graph Design IQ Test](https://www.perceptualedge.com/files/GraphDesignIQ.html)

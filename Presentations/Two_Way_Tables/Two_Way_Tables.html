@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contingency Tables</title>
+    <meta charset="utf-8">
+    <meta name="author" content="1.7 in OI" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my_theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Contingency Tables
+## Finding Relationships between Categorical Variables
+### 1.7 in OI
+
+---
+
+# Objectives
+
+### - Construct and interpret contingency tables
+
+### - Describe relationships between categorcial variables
+---
+# What is a contingency table?
+
+## A **contingency** tables describes two categorical variables, organizing counts according to a row variable and a column variable.
+---
+
+```
+## -- Attaching packages -------------------------------------------- tidyverse 1.2.1 --
+```
+
+```
+## v ggplot2 3.0.0     v purrr   0.2.5
+## v tibble  1.4.2     v dplyr   0.7.6
+## v tidyr   0.8.1     v stringr 1.3.1
+## v readr   1.1.1     v forcats 0.3.0
+```
+
+```
+## -- Conflicts ----------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+```
+# USA Census at School data
+
+### We are going to create a table to help us analyze the relationship between student responses to the gender question and the superpower question. 
+
+Which of the following superpowers would you most like to have?
+.pull-left[
+- Invisibility
+- Telepathy (read minds)
+- Freeze time
+]
+.pull-right[
+- Super strength
+- Fly
+]
+---
+# Constructing the Contingency Table
+
+We will use a package called `janitor` to contruct the contingency table.  You will need to install it using the `install.packages("janitor")` call and then load it by using the `library()` function.  Or, it's already installed if you're using the SVGS Workspace on rstudio.cloud. 
+
+
+```r
+library(janitor) 
+```
+
+The basic format of a call is:
+
+
+```r
+tabyl(dataset, var1, var2)
+```
+
+Or, you can use the piping operator and call it like so: 
+
+
+```r
+dataset %&gt;% tabyl(var1,var2)
+```
+
+---
+# Let's do it!
+
+Since we want the relationship between `Superpower` and `Gender`, we would simply run: 
+
+
+```r
+at_school %&gt;% 
+  tabyl(Superpower,Gender)
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Superpower &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Female &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Male &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Fly &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 64 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 49 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Freeze time &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 49 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 64 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Invisibility &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 40 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Super strength &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Telepathy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 41 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+# Want the Totals?
+
+There's an option for that too. 
+
+
+```r
+at_school %&gt;% 
+  tabyl(Superpower,Gender) %&gt;% adorn_totals(where=c("row","col"))
+```
+
+```
+##      Superpower Female Male Total
+##             Fly     64   49   113
+##     Freeze time     49   64   113
+##    Invisibility     40   26    66
+##  Super strength      6   27    33
+##       Telepathy     70   41   111
+##           Total    229  207   436
+```
+The `adorn_total()` function takes an optional argument `where=` with values `"row"`, `"col"`, or `c("row","col")`.  See the help file for more info. 
+
+
+```r
+?adorn_totals
+```
+
+---
+# Percentages
+
+Very often it can hard to see relationships in a contingency table when we're looking at raw counts. We can turn the raw counts into percentages as needed. 
+
+
+```r
+at_school %&gt;% 
+  tabyl(Superpower,Gender) %&gt;% 
+  adorn_percentages()
+```
+
+```
+##      Superpower    Female      Male
+##             Fly 0.5663717 0.4336283
+##     Freeze time 0.4336283 0.5663717
+##    Invisibility 0.6060606 0.3939394
+##  Super strength 0.1818182 0.8181818
+##       Telepathy 0.6306306 0.3693694
+```
+
+---
+# Percentages
+
+Very often it can hard to see relationships in a contingency table when we're looking at raw counts. We can turn the raw counts into percentages as needed. 
+
+
+```r
+at_school %&gt;% 
+  tabyl(Superpower,Gender) %&gt;% 
+  adorn_percentages(denominator="col")
+```
+
+```
+##      Superpower     Female      Male
+##             Fly 0.27947598 0.2367150
+##     Freeze time 0.21397380 0.3091787
+##    Invisibility 0.17467249 0.1256039
+##  Super strength 0.02620087 0.1304348
+##       Telepathy 0.30567686 0.1980676
+```
+
+---
+# Percentages
+
+Very often it can hard to see relationships in a contingency table when we're looking at raw counts. We can turn the raw counts into percentages as needed. 
+
+
+```r
+at_school %&gt;% 
+  tabyl(Superpower,Gender) %&gt;% 
+  adorn_percentages(denominator="all") 
+```
+
+```
+##      Superpower     Female       Male
+##             Fly 0.14678899 0.11238532
+##     Freeze time 0.11238532 0.14678899
+##    Invisibility 0.09174312 0.05963303
+##  Super strength 0.01376147 0.06192661
+##       Telepathy 0.16055046 0.09403670
+```
+---
+# Creating Bar Graphs
+
+The `geom_bar` geom is the main tool for creating bar graphs. 
+
+
+```r
+at_school %&gt;% ggplot(aes(x=Superpower))+
+  geom_bar()
+```
+
+![](Two_Way_Tables_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+---
+# Horizontal Bar Graphs
+
+They can be easier to read when viewed horizontally at times. 
+
+
+```r
+at_school %&gt;% 
+  ggplot(aes(x=Superpower))+
+  geom_bar()+
+  coord_flip()
+```
+
+![](Two_Way_Tables_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+
+---
+# Stacked Bar Graphs
+
+Stacked bar graphs are useful tools for seeing relationships between categorical variables. 
+
+
+```r
+at_school %&gt;% ggplot(aes(x=Superpower,fill=Gender)) + 
+  geom_bar()
+```
+
+![](Two_Way_Tables_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+---
+# Stacked Bar Graph with Percentages
+
+
+```r
+at_school %&gt;% ggplot(aes(x=Superpower,fill=Gender)) + 
+  geom_bar(position="fill") +
+  labs(y="Proportion")
+```
+
+![](Two_Way_Tables_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+
+---
+# Side-by-side Bar Graphs
+
+
+```r
+at_school %&gt;% ggplot(aes(x=Superpower,fill=Gender)) + 
+  geom_bar(position="dodge")
+```
+
+![](Two_Way_Tables_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+---
+# Can you create this graph? 
+
+![](Two_Way_Tables_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+---
+# Custom Colors
+
+```r
+at_school %&gt;% ggplot(aes(x=Gender,fill=Superpower)) + 
+  geom_bar(position="dodge") + 
+  scale_fill_brewer(palette="Accent")
+```
+
+![](Two_Way_Tables_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+    </textarea>
+<script src="remark-latest.min.js"></script>
+<script src="custom.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+"0","dataset %>% tabyl(var1,var2)
+"
+"2","Error in eval(lhs, parent, parent) : object 'dataset' not found
+"

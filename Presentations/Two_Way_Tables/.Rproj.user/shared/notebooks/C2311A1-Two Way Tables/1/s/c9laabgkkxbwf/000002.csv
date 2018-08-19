@@ -1,0 +1,42 @@
+"0","library(knitr)"
+"0","at_school %>% "
+"0","  tabyl(Superpower,Gender) %>% "
+"0","  kable(format=""html"")"
+"1","<table>
+ <thead>
+  <tr>
+   <th style=""text-align:left;""> Superpower </th>
+   <th style=""text-align:right;""> Female </th>
+   <th style=""text-align:right;""> Male </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style=""text-align:left;""> Fly </td>
+   <td style=""text-align:right;""> 64 </td>
+   <td style=""text-align:right;""> 49 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Freeze time </td>
+   <td style=""text-align:right;""> 49 </td>
+   <td style=""text-align:right;""> 64 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Invisibility </td>
+   <td style=""text-align:right;""> 40 </td>
+   <td style=""text-align:right;""> 26 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Super strength </td>
+   <td style=""text-align:right;""> 6 </td>
+   <td style=""text-align:right;""> 27 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Telepathy </td>
+   <td style=""text-align:right;""> 70 </td>
+   <td style=""text-align:right;""> 41 </td>
+  </tr>
+</tbody>
+</table>"
+"1","
+"

@@ -1,0 +1,6 @@
+"0","humans <- starwars %>% filter(species==""Human"")"
+"0","IQR(humans$height,na.rm=TRUE)"
+"1","[1]"
+"1"," 15.5"
+"1","
+"

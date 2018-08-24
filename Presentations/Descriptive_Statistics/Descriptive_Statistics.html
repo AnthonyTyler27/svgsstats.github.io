@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Descriptive Statistics</title>
+    <meta charset="utf-8">
+    <meta name="author" content="1.6 in OI and 6.1.1 in MD" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my_theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Descriptive Statistics
+## Measures of Center and Variation
+### 1.6 in OI and 6.1.1 in MD
+
+---
+
+class: center, middle, inverse
+# Measure Center with Mean and Median
+---
+# Measuring Center: The Mean
+
+There are many types of means.  We will primarily use the arithmetic mean (what you know as the average).  We will assume when one uses the term mean in this course that they are referring to this mean. 
+
+
+.pull-left[
+
+# $$ \bar{x}=\sum{\frac{x_i}{n}} $$
+]
+.pull-right[
+# $$ \mu = \sum{\frac{x_i}{N}} $$
+]
+
+---
+# Measuring Center: Median
+
+The median M is the midpoint of the distribution.  It is the 50th percentile.  The number such that half of the observations are smaller and the other half are larger. 
+
+How to manually find the median: 
+- Arrange observations in order from smallest to largest.
+- If n is odd, then the median is the center observation. 
+- If n is even, then the median is the mean fo the two center observations. 
+---
+# Mean VS Median
+
+The mean and median both measure center in different ways and both are useful. 
+
+How the two measures of center compare to each other depends on the distribution. 
+
+- In a roughly symmetric distribution, mean &amp;asymp; median
+- In a perfectly symmetric distribution, mean = median
+- In a skewed distribution, the mean is **usually** farther out in the long tail than the median is. 
+
+The median is a **resistant** measure of center because it is unaffected by outliers. 
+---
+# A Comparison
+
+
+
+![](Descriptive_Statistics_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+---
+# A Comparison
+
+![](Descriptive_Statistics_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+---
+# Measuring Spread
+
+A measure of center alone can be misleading.  We should also include a measure of spread when describing a distribution. 
+
+In our course, the main tools that we will use to measure spread are: 
+- Range
+- IQR
+- Standard Deviation
+- Variance
+---
+# A Note about Range
+
+Range perhaps could be appropriate with smaller data sets, but it is not a **resistant** measure.   
+
+Outliers drastically alter the range. 
+
+It is not predictive. 
+
+![](Descriptive_Statistics_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+---
+# The Interquartile Range
+
+The interquartile range (IQR) provides the range of the middle 50% of data values.   
+
+--
+
+R has a function called `IQR()` that can calculate it for you. 
+
+--
+
+When interpreting the interquartile range, you could describe it as **"the range of the middle half"**.
+
+
+```r
+humans &lt;- starwars %&gt;% filter(species=="Human")
+
+IQR(humans$height,na.rm=TRUE)
+```
+
+```
+## [1] 15.5
+```
+The range of the middle 50% of humans in the Star Wars movies is 15.5 centimeters. 
+
+---
+# Identifying Outliers
+
+The IQR is also used as part of a rule of thumb for identifying outliers. 
+--
+
+### &lt;u&gt;The 1.5 x IQR Rule for Outliers&lt;/u&gt;
+We will *generally* call an observation an outlier if it falls more than 1.5 x IQR above the third quartile or below the first quartile. 
+
+---
+## Are there outliers in the Star Wars data?
+
+Given that the Star Wars data has the following 5 number summary, determine if there are any outliers present. 
+
+- Minimum = 150 cm
+- Q1 = 168.5 cm
+- Median = 180 cm
+- Q3 = 184 cm
+- Maximum = 202 cm
+
+---
+# The eyeball test for outliers
+
+A quick way to see if there are any outliers is to glance at the boxplot. 
+
+![](Descriptive_Statistics_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+---
+## Measuring Spread: The Standard Deviation
+
+### The **standard deviation** is by far the most common measure of variation.   It measures how far data values are away from the mean while weighing data values far from the mean more strongly than those that are close. 
+
+---
+# Example
+
+![](Descriptive_Statistics_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+
+Consider the following data on the number of pets owned by a group of 9 children.
+
+---
+# Example
+
+![](Descriptive_Statistics_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+
+The mean is 5. 
+---
+# Example
+
+![](Descriptive_Statistics_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+
+--
+.pull-left[
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; # of pets &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; deviations &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; squared deviations &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+.pull-right[
+Sum of Squared Deviations: 52
+
+"Average" of Squared Deviations: $$ \frac{52}{9-1} = \frac{52}{8} = 6.5$$`
+
+Standard Deviation: $$ \sqrt{\frac{6.5}{8}} = 2.55 $$
+]
+
+---
+class: center, middle, inverse
+## Definition:
+## The **standard deviation** s&lt;sub&gt;x&lt;/sub&gt; measures the average distance of the observations from their mean. It is calculated by finding an average of the squared distances and then taking the square root. This average squared distance is called the **variance**.
+---
+# Formulas
+
+Variance = $$ s_x^2 = \frac{1}{n-1} \sum{(x_i-\bar{x})^2} $$
+
+Standard Deviation = $$ s_x=\sqrt{s_x^2} = \sqrt{\frac{1}{n-1}\sum{(x_i-\bar{x})^2}} $$
+
+--
+
+Consider for a second.  What are the units of variance and standard deviation?
+---
+# How to Interpret Standard Deviation
+
+### Standard Deviation measures spread by giving the “typical” or “average” distance that the observations (context) are away from their (context) mean.
+
+---
+# Back to Star Wars Human Heights
+
+
+```r
+sd(humans$height,na.rm=TRUE)
+```
+
+```
+## [1] 12.53674
+```
+
+```r
+mean(humans$height,na.rm=TRUE)
+```
+
+```
+## [1] 176.6452
+```
+
+--
+## Humans in Star Wars have heights that are typically approximately 12.5 cm from their mean of 176.6 cm. 
+
+---
+## &lt;u&gt; Choosing Measures of Center/Spread &lt;/u&gt;
+
+### We now have a choice between two descriptions for center and spread
+### - Mean and Standard Deviation
+### - Median and Interquartile Range
+
+---
+## &lt;u&gt; Choosing Measures of Center/Spread &lt;/u&gt;
+
+### We typically prefer mean and standard deviation whenever possible, but-
+
+- The median and IQR are usually better than the mean and standard deviation for describing a skewed distribution or a distribution with outliers.
+
+
+- Use mean and standard deviation only for reasonably symmetric distributions that don’t have outliers.
+
+
+**NOTE: Numerical summaries do not fully describe the shape of a distribution.  ALWAYS  PLOT  YOUR  DATA!**
+
+
+---
+# Back to the Humans
+
+![](Descriptive_Statistics_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+    </textarea>
+<script src="remark-latest.min.js"></script>
+<script src="custom.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

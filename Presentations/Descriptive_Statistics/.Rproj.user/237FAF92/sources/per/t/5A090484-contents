@@ -1,0 +1,166 @@
+---
+title: "Descriptive Statistics"
+subtitle: "Measures of Center and Variation"
+author: "1.6 in OI and 6.1.1 in MD"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default","default-fonts","my_theme.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "custom.js"
+    chakra: "remark-latest.min.js"
+---
+class: center, middle, inverse
+# Measure Center with Mean and Median
+---
+# Measuring Center: The Mean
+
+There are many types of means.  We will primarily use the arithmetic mean (what you know as the average).  We will assume when one uses the term mean in this course that they are referring to this mean. 
+
+
+.pull-left[
+
+# $$ \bar{x}=\sum{\frac{x_i}{n}} $$
+]
+.pull-right[
+# $$ \mu = \sum{\frac{x_i}{N}} $$
+]
+
+---
+# Measuring Center: Median
+
+The median M is the midpoint of the distribution.  It is the 50th percentile.  The number such that half of the observations are smaller and the other half are larger. 
+
+How to manually find the median: 
+- Arrange observations in order from smallest to largest.
+- If n is odd, then the median is the center observation. 
+- If n is even, then the median is the mean fo the two center observations. 
+---
+# Mean VS Median
+
+The mean and median both measure center in different ways and both are useful. 
+
+How the two measures of center compare to each other depends on the distribution. 
+
+- In a roughly symmetric distribution, mean &asymp; median
+- In a perfectly symmetric distribution, mean = median
+- In a skewed distribution, the mean is **usually** farther out in the long tail than the median is. 
+
+The median is a **resistant** measure of center because it is unaffected by outliers. 
+---
+# A Comparison
+
+```{r echo=FALSE, fig.width=8,fig.height=6}
+require(tidyverse)
+df <- tibble(x=numeric())
+df<-add_row(df,x=rnorm(10000,100,10))
+ggplot(df,aes(x=x))+
+  geom_density(fill="darkblue") +
+  geom_vline(xintercept=mean(df$x),color="red",size=3) + 
+  geom_vline(xintercept=median(df$x),color="yellow",size=3,alpha=1) +
+  ggtitle("Red = Mean, Yellow = Median")
+```
+---
+# A Comparison
+
+```{r echo=FALSE, fig.width=8,fig.height=6}
+library(tidyverse)
+df <- tibble(x=numeric())
+df <- add_row(df,x=rbeta(10000,1.5,10)*100)
+ggplot(df,aes(x=x))+
+  geom_density(fill="darkblue") +
+  geom_vline(xintercept=mean(df$x),color="red",size=3) + 
+  geom_vline(xintercept=median(df$x),color="yellow",size=3,alpha=1) +
+  ggtitle("Red = Mean, Yellow = Median")
+```
+---
+# Measuring Spread
+
+A measure of center alone can be misleading.  We should also include a measure of spread when describing a distribution. 
+
+In our course, the main tools that we will use to measure spread are: 
+- Range
+- IQR
+- Standard Deviation
+- Variance
+---
+# A Note about Range
+
+Range perhaps could be appropriate with smaller data sets, but it is not a **resistant** measure.   
+
+Outliers drastically alter the range. 
+
+It is not very predictive. 
+
+```{r echo=FALSE, fig.height=4,fig.width=6}
+df <- runif(100000,5,100)
+theRanges <- c()
+for (each in seq(1,10000,1)){
+  subdf <- sample(df,20)
+  theRanges <- c(theRanges,max(subdf)-min(subdf))
+}
+df <- tibble(values=theRanges)
+ggplot(df,aes(x=values))+geom_density(fill="darkgreen") + geom_vline(xintercept=95,color="yellow",size=2.5)
+
+```
+
+---
+# The Interquartile Range
+
+The interquartile range (IQR) provides the range of the middle 50% of data values.   
+
+--
+
+R has a function called `IQR()` that can calculate it for you. 
+
+--
+
+When interpreting the interquartile range, you could describe it as **"the range of the middle half"**.
+
+```{r}
+humans <- starwars %>% filter(species=="Human")
+
+IQR(humans$height,na.rm=TRUE)
+
+```
+The range of the middle 50% of humans in the Star Wars movies is 15.5 centimers. 
+
+---
+# Identifying Outliers
+
+The IQR is also used as part of a rule of thumb for identifying outliers. 
+--
+
+### <u>The 1.5 x IQR Rule for Outliers</u>
+We will *generally* call an observation an outlier if it falls more than 1.5 x IQR above the third quartile or below the first quartile. 
+
+--
+---
+## Are there outliers in the Star Wars data?
+
+Given that the Star Wars data has the following 5 number summary, determine if there are any outliers present. 
+
+- Minimum = 150 cm
+- Q1 = 168.5 cm
+- Median = 180 cm
+- Q3 = 184 cm
+- Maximum = 202 cm
+
+---
+# The eyeball test for outliers
+
+A quick way to see if there are any outliers is to glance at the boxplot. 
+```{r echo=FALSE,fig.height=4,fig.width=4}
+ggplot(humans,aes(y=height))+
+  geom_boxplot()+
+  ggtitle("Star Wars Human Characters Heights") +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+
+```
+---
+

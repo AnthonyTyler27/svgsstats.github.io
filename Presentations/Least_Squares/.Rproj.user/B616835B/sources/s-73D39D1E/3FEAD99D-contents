@@ -19,7 +19,7 @@ library(tidyverse)
 library(tibble)
 library(ggthemes)
 library(moderndive)
-knitr::opts_chunk$set(echo=FALSE,error=FALSE,warning=FALSE)
+knitr::opts_chunk$set(echo=FALSE,error=FALSE,warning=FALSE,fig.width=10,fig.height=7)
 theme_set(theme_few())
 ```
 
@@ -129,7 +129,7 @@ plot + geom_abline(data=possibilities %>% top_n(-1,sum_of_squares),aes(slope=m,i
 - $a$ is the **y intercept**, the predicted value of *y* when *x = 0*
 
 ---
-# Relationship between mammal gestation and longevity
+# Mammal gestation and longevity
 
 ```{r}
 load(url("http://www.lock5stat.com/datasets/MammalLongevity.rda"))
@@ -141,14 +141,14 @@ load(url("http://www.lock5stat.com/datasets/MammalLongevity.rda"))
                 options = list(pageLength = 6))
 ```
 ---
-# Relationship between mammal gestation and longevity
+# Mammal Gestation and Longevity
 ```{r}
 MammalLongevity %>% ggplot(aes(x=Gestation,y=Longevity))+geom_point()
 ```
 
 Are there any outliers?
 ---
-# Relationship between mammal gestation and longevity
+# Mammal Gestation and Longevity
 ```{r}
 
 theElephant <- MammalLongevity %>% filter(Animal=="elephant")
@@ -183,7 +183,7 @@ theModel <- lm(MammalLongevity$Longevity~MammalLongevity$Gestation)
 
 $$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
 .pull-left[
-```{r fig.width=4,fig.height=3}
+```{r fig.width=6,fig.height=4}
 MammalLongevity %>%  ggplot(aes(x=Gestation,y=Longevity)) + 
   geom_point() + geom_smooth(method="lm",se=FALSE)
 ```
@@ -201,7 +201,7 @@ theModel <- lm(MammalLongevity$Longevity~MammalLongevity$Gestation)
 
 $$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
 .pull-left[
-```{r fig.width=4,fig.height=3}
+```{r fig.width=6,fig.height=4}
 MammalLongevity %>%  ggplot(aes(x=Gestation,y=Longevity)) + 
   geom_point() + geom_smooth(method="lm",se=FALSE)
 ```
@@ -220,7 +220,7 @@ theModel <- lm(MammalLongevity$Longevity~MammalLongevity$Gestation)
 
 $$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
 .pull-left[
-```{r fig.width=4,fig.height=3}
+```{r fig.width=6,fig.height=4}
 MammalLongevity %>%  ggplot(aes(x=Gestation,y=Longevity)) + 
   geom_point() + geom_smooth(method="lm",se=FALSE)
 ```
@@ -238,7 +238,7 @@ theModel <- lm(MammalLongevity$Longevity~MammalLongevity$Gestation)
 
 $$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
 .pull-left[
-```{r fig.width=4,fig.height=3}
+```{r fig.width=6,fig.height=4}
 MammalLongevity %>%  ggplot(aes(x=Gestation,y=Longevity)) + 
   geom_point() + geom_smooth(method="lm",se=FALSE)
 ```

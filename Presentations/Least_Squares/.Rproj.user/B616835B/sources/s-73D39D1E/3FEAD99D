@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "1667352780",
     "id" : "3FEAD99D",
-    "lastKnownWriteTime" : 1536619571,
-    "last_content_update" : 1536619571399,
+    "lastKnownWriteTime" : 1536620546,
+    "last_content_update" : 1536620546043,
     "path" : "C:/Users/Anthony/OneDrive - Shenandoah Valley Governor's School/DE Statistics/2 - Linear Regression/Least-Squares Regression/least-squares_regression.Rmd",
     "project_path" : "least-squares_regression.Rmd",
     "properties" : {
-        "cursorPosition" : "313,9",
-        "scrollLine" : "294"
+        "cursorPosition" : "240,30",
+        "scrollLine" : "239"
     },
     "relative_order" : 1,
     "source_on_save" : false,

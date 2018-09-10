@@ -1,0 +1,4 @@
+"0","plot + geom_abline(data=possibilities %>% top_n(-1,sum_of_squares),aes(slope=m,intercept=b),color=""red"",size=1)"
+"2","Error in filter_impl(.data, quo) : 
+  Evaluation error: object 'sum_of_squares' not found.
+"

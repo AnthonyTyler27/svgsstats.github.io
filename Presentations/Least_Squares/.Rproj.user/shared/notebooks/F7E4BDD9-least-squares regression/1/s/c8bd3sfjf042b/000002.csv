@@ -1,0 +1,2 @@
+"0","possibilities <- tibble(m=runif(400,0,3),b=runif(400,1,4))"
+"0","plot + geom_abline(data=possibilities,aes(slope=m,intercept=b),alpha=.1)"

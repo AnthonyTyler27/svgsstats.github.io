@@ -1,0 +1,314 @@
+---
+title: "Least-Squares Regression"
+subtitle: "Fitting a Line to Data"
+author: "7.1 to 7.3 in OI and 6.1.2 through 6.1.4 in MD"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default","default-fonts","my_theme.css"]
+    #css: ["default"] #,"tamu"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "custom.js"
+    chakra: "remark-latest.min.js"
+---
+```{r echo=FALSE, error=FALSE,warning=FALSE}
+library(tidyverse)
+library(tibble)
+library(ggthemes)
+library(moderndive)
+knitr::opts_chunk$set(echo=FALSE,error=FALSE,warning=FALSE)
+theme_set(theme_few())
+```
+
+# Regression Line
+
+### A **regression line** is simply a line that describes how a response variable *y* changes as an explanatory variable *x* changes.   They are often used to predit the value of *y* for a given value of *x*
+---
+# Consider for a moment...
+```{r}
+ranData <- tibble(x1 = anscombe$x1, y1= anscombe$y1)
+
+plot <- ranData %>% ggplot(aes(x=x1,y=y1))+geom_point()
+plot
+```
+
+---
+# So many possibilities...
+```{r}
+possibilities <- tibble(m=runif(400,0,3),b=runif(400,1,4))
+plot + geom_abline(data=possibilities,aes(slope=m,intercept=b),alpha=.1)
+```
+
+---
+#  Which line is the best one? 
+
+## Ultimately, we want the line that lies closest to the points. 
+
+--
+
+## How do we measure how close a line falls to a set of points?
+
+---
+# Residuals
+
+## A **residual** is the difference between an observed value of the response variable and the value predicted by the regression line. 
+
+
+### $$ \text{residual} = \text{observed y} - \text{predicted y} $$
+
+### $$ \text{residual} = y - \hat{y} $$
+---
+# Let's look at one line
+
+```{r}
+plot + geom_abline(data=possibilities,aes(slope=m,intercept=b),alpha=.1) + geom_abline(aes(slope=0.56,intercept=2.5),color="red",size=1)
+```
+
+---
+# Let's look at one line
+```{r}
+plot + geom_abline(data=possibilities,aes(slope=m,intercept=b),alpha=.1) + geom_abline(aes(slope=0.56,intercept=2.5),color="red",size=1) + geom_segment(aes(xend=x1,yend=0.56*x1+2.5),color="blue",size=1)
+```
+
+---
+# Least-squares regression
+
+### is so-named because the line that we choose is the line whose sum of the squares of these residuals is as small as possible. 
+```{r fig.width=7,fig.height=4.5}
+plot + geom_abline(data=possibilities,aes(slope=m,intercept=b),alpha=.1) + geom_abline(aes(slope=0.56,intercept=2.5),color="red",size=1) + geom_segment(aes(xend=x1,yend=0.56*x1+2.5),color="blue",size=1) + geom_segment(aes(xend = x1 + (y1 - (0.56*x1+2.5)),yend=y1),color="blue",size=1) +
+  geom_segment(aes(x=x1,y=0.56*x1+2.5,xend=x1+(y1 - (0.56*x1+2.5)),yend=0.56*x1+2.5),color="blue",size=1) +
+  geom_segment(aes(x=x1+(y1 - (0.56*x1+2.5)),y=0.56*x1+2.5,yend=y1,xend=x1+(y1-(0.56*x1+2.5))),color="blue",size=1)
+```
+
+
+---
+# Top 10 "close" lines
+```{r}
+sum_of_squares <- function(slope,intercept) {
+  sum = 0
+  for (row in 1:nrow(ranData)){
+    sum = sum + (ranData$y1[row]-(slope*ranData$x1[row]+intercept))^2
+  }
+  return(sum)
+}
+
+possibilities <- possibilities %>% mutate(sum_of_squares=sum_of_squares(m,b))
+
+top_10 <- possibilities %>% top_n(-10,sum_of_squares)
+
+plot <- plot + geom_abline(data=top_10,aes(slope=m,intercept=b,color=sum_of_squares),alpha=.8)
+plot
+```
+
+---
+# Closest Line in red
+
+```{r}
+plot + geom_abline(data=possibilities %>% top_n(-1,sum_of_squares),aes(slope=m,intercept=b),color="red",size=1)
+```
+
+---
+[Interactive Applet](https://www.desmos.com/calculator/dwlrexwvf2
+)
+---
+# Interpreting a Regression Line
+
+### A regression line is a **model** for the data.  The equation of the regression line gives a simple, compact mathematical description of what the model tells us about the relationship between our *explanatory variable* and our *response variable*. 
+
+--
+
+### Generally, our equations will follow the formula: 
+
+### $$ \hat{y} = a + bx $$
+
+- $\hat{y}$ is the **predicted value** of the response variable *y* for a given value of the explanatory variable *x*. 
+- $b$ is the **slope**, the amount by which *y* is predicted to change when *x* increases by one unit. 
+- $a$ is the **y intercept**, the predicted value of *y* when *x = 0*
+
+---
+# Relationship between mammal gestation and longevity
+
+```{r}
+load(url("http://www.lock5stat.com/datasets/MammalLongevity.rda"))
+```
+
+```{r}
+  DT::datatable(MammalLongevity,
+                fillContainer = FALSE, 
+                options = list(pageLength = 6))
+```
+---
+# Relationship between mammal gestation and longevity
+```{r}
+MammalLongevity %>% ggplot(aes(x=Gestation,y=Longevity))+geom_point()
+```
+
+Are there any outliers?
+---
+# Relationship between mammal gestation and longevity
+```{r}
+
+theElephant <- MammalLongevity %>% filter(Animal=="elephant")
+
+MammalLongevity %>% ggplot(aes(x=Gestation,y=Longevity))+geom_point()+geom_point(data=theElephant, aes(x=Gestation,y=Longevity),color="red",size=3) + geom_label(data = theElephant,aes(label=Animal),nudge_x=-5,nudge_y=-2)
+```
+
+Are there any outliers?
+
+---
+# Get rid of the outlier
+
+```{r echo=TRUE,fig.width=6.75,fig.height=4.25}
+MammalLongevity <- MammalLongevity %>% filter(Animal != "elephant") 
+MammalLongevity %>%  
+  ggplot(aes(x=Gestation,y=Longevity)) + geom_point()
+```
+---
+# Fitting a Line
+
+```{r echo=TRUE,fig.width=6.75,fig.height=4.25}
+MammalLongevity %>%  ggplot(aes(x=Gestation,y=Longevity)) + 
+  geom_point() + geom_smooth(method="lm",se=FALSE)
+```
+
+---
+# Mammal Gestation and Longevity
+```{r}
+theModel <- lm(MammalLongevity$Longevity~MammalLongevity$Gestation)
+```
+### The formula for the least-squares regression line is:
+
+$$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
+.pull-left[
+```{r fig.width=4,fig.height=3}
+MammalLongevity %>%  ggplot(aes(x=Gestation,y=Longevity)) + 
+  geom_point() + geom_smooth(method="lm",se=FALSE)
+```
+]
+.pull-right[
+What is the meaning behind the slope?
+
+]
+---
+# Mammal Gestation and Longevity
+```{r}
+theModel <- lm(MammalLongevity$Longevity~MammalLongevity$Gestation)
+```
+### The formula for the least-squares regression line is:
+
+$$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
+.pull-left[
+```{r fig.width=4,fig.height=3}
+MammalLongevity %>%  ggplot(aes(x=Gestation,y=Longevity)) + 
+  geom_point() + geom_smooth(method="lm",se=FALSE)
+```
+]
+.pull-right[
+What is the meaning behind the slope?
+
+The slope indicates that the longevity of mammals is predicted to go up by 0.024 years for every extra day of gestation.
+]
+---
+# Mammal Gestation and Longevity
+```{r}
+theModel <- lm(MammalLongevity$Longevity~MammalLongevity$Gestation)
+```
+### The formula for the least-squares regression line is:
+
+$$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
+.pull-left[
+```{r fig.width=4,fig.height=3}
+MammalLongevity %>%  ggplot(aes(x=Gestation,y=Longevity)) + 
+  geom_point() + geom_smooth(method="lm",se=FALSE)
+```
+]
+.pull-right[
+What is the meaning behind the y-intercept?
+
+]
+---
+# Mammal Gestation and Longevity
+```{r}
+theModel <- lm(MammalLongevity$Longevity~MammalLongevity$Gestation)
+```
+### The formula for the least-squares regression line is:
+
+$$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
+.pull-left[
+```{r fig.width=4,fig.height=3}
+MammalLongevity %>%  ggplot(aes(x=Gestation,y=Longevity)) + 
+  geom_point() + geom_smooth(method="lm",se=FALSE)
+```
+]
+.pull-right[
+What is the meaning behind the y-intercept
+
+The longevity the model predicts for 0 days of gestation is 8.009 years.
+]
+---
+class: center, inverse, middle
+
+# Interpreting Slope
+
+## For every one unit change in the x-variable (context), the y-variable is predicted to increase by *slope* (context).
+---
+class: center,inverse,middle
+
+# Interpreting Y-intercept
+
+## When the x variable (context) is zero, the y variable (context) is estimated to be *y-intercept*.
+---
+# Prediction
+
+
+#### $$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
+
+A three-toed sloth has a gestational period of 183 days.  What is the predicted life expectancy?
+
+--
+
+
+#### $$ \widehat{Longevity} = 8.008714 + 0.024363 \cdot 183 = 12.5 \text{ years} $$
+![:scale 70%](http://brdo.com.ua/wp-content/uploads/2017/07/maxresdefault.jpg)
+---
+# Residuals
+
+### A three-toed sloth's life expectancy is actually 17 years.  Calculate the residual associated with the three-toed sloth. 
+
+--
+
+#### $$ \text{Residual} = \text{actual life expectancy} - \text{predicted life expectancy} $$
+
+#### $$ \text{Residual} = 17 - 12.5 = 4.5 \text{ years} $$
+
+
+--
+
+The actual life expectancy of the three-toed sloth is 4.5 years higher than the model predicts it to be.
+---
+# Extrapolation
+
+### We can use a reression line to predict the response $\hat{y}$ for a specific value of the explanatory variable *x*.  The accuracy of the prediction depends on how much the data scatter around the line. 
+
+### While we *can* substitute any value of *x* into the equation of the regression line, we must exercise caution in making predictions outside the observed values of *x*.
+---
+
+<img width="90%" height="90%" src="https://i.stack.imgur.com/3Ab7e.jpg"></img>
+
+
+---
+
+<img width="100%" height="100%" src="https://i.stack.imgur.com/4QwTj.png"></img>
+
+---
+
+<img width="100%" height="100%" src="https://i.stack.imgur.com/7oDyK.png"></img>
+
+---
+
+<center>
+<img width="65%" height="65%" src="https://i.stack.imgur.com/IQu3m.png"></img>
+</center>

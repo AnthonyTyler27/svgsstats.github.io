@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1536600033916.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "2E501CDD",
+    "lastKnownWriteTime" : 7308604914264011873,
+    "last_content_update" : 1536600033916,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "55422E86",
+        "caption" : "ranData",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=ranData&cache_key=55422E86",
+        "displayedObservations" : 11,
+        "environment" : "",
+        "object" : "ranData",
+        "preview" : 0,
+        "totalObservations" : 11,
+        "variables" : 2
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

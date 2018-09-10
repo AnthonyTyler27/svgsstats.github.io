@@ -1,0 +1,27 @@
+---
+title: "Measures of Relative Standing"
+#subtitle: "Measures of Center and Variation"
+#author: "1.6 in OI and 6.1.1 in MD"
+output:
+  xaringan::moon_reader:
+  lib_dir: libs
+css: ["default","default-fonts","my_theme.css"]
+nature:
+  highlightStyle: github
+highlightLines: true
+countIncrementalSlides: false
+beforeInit: "custom.js"
+chakra: "remark-latest.min.js"
+---
+class: center,inverse,middle
+# Is an 85 a good test score?
+---
+class: center,middle
+# A **z-score** tells us how many standard deviations from the mean an observation falls, and in what direction?
+---
+
+---
+# Measuring Position: Percentiles
+
+### The **pth percentile** is the value in the dataset with p% of observations less than it. 
+

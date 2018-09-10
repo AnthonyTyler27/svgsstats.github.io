@@ -1,0 +1,2 @@
+"0","theElephant <- MammalLongevity %>% filter(Animal==""elephant"")"
+"0","MammalLongevity %>% ggplot(aes(x=Gestation,y=Longevity))+geom_point()+geom_point(data=theElephant, aes(x=Gestation,y=Longevity),color=""red"",size=3) + geom_label(data = theElephant,aes(label=Animal),nudge_x=-5,nudge_y=-2)"

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Least-Squares Regression</title>
+    <meta charset="utf-8">
+    <meta name="author" content="7.1 to 7.3 in OI and 6.1.2 through 6.1.4 in MD" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+    <script src="libs/jquery-1.12.4/jquery.min.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.4/datatables.js"></script>
+    <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+    <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+    <link rel="stylesheet" href="my_theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Least-Squares Regression
+## Fitting a Line to Data
+### 7.1 to 7.3 in OI and 6.1.2 through 6.1.4 in MD
+
+---
+
+
+
+# Regression Line
+
+### A **regression line** is simply a line that describes how a response variable *y* changes as an explanatory variable *x* changes.   They are often used to predit the value of *y* for a given value of *x*
+---
+# Consider for a moment...
+![](least-squares_regression_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+
+---
+# So many possibilities...
+![](least-squares_regression_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+
+---
+#  Which line is the best one? 
+
+## Ultimately, we want the line that lies closest to the points. 
+
+--
+
+## How do we measure how close a line falls to a set of points?
+
+---
+# Residuals
+
+## A **residual** is the difference between an observed value of the response variable and the value predicted by the regression line. 
+
+
+### $$ \text{residual} = \text{observed y} - \text{predicted y} $$
+
+### $$ \text{residual} = y - \hat{y} $$
+---
+# Let's look at one line
+
+![](least-squares_regression_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+---
+# Let's look at one line
+![](least-squares_regression_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+
+---
+# Least-squares regression
+
+### is so-named because the line that we choose is the line whose sum of the squares of these residuals is as small as possible. 
+![](least-squares_regression_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+
+
+---
+# Top 10 "close" lines
+![](least-squares_regression_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+
+---
+# Closest Line in red
+
+![](least-squares_regression_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+
+---
+[Interactive Applet](https://www.desmos.com/calculator/dwlrexwvf2
+)
+---
+# Interpreting a Regression Line
+
+### A regression line is a **model** for the data.  The equation of the regression line gives a simple, compact mathematical description of what the model tells us about the relationship between our *explanatory variable* and our *response variable*. 
+
+--
+
+### Generally, our equations will follow the formula: 
+
+### $$ \hat{y} = a + bx $$
+
+- `\(\hat{y}\)` is the **predicted value** of the response variable *y* for a given value of the explanatory variable *x*. 
+- `\(b\)` is the **slope**, the amount by which *y* is predicted to change when *x* increases by one unit. 
+- `\(a\)` is the **y intercept**, the predicted value of *y* when *x = 0*
+
+---
+# Relationship between mammal gestation and longevity
+
+
+
+<div id="htmlwidget-6d1d8e89d72a7a5efb84" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6d1d8e89d72a7a5efb84">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40"],["baboon","bear,black","bear,grizzly","bear,polar","beaver","buffalo","camel","cat","chimpanzee","chipmunk","cow","deer","dog","donkey","elephant","elk","fox","giraffe","goat","gorilla","guinea pig","hippopotamus","horse","kangaroo","leopard","lion","monkey","moose","mouse","opposum","pig","puma","rabbit","rhinoceros","sea lion","sheep","squirrel","tiger","wolf","zebra"],[187,219,225,240,122,278,406,63,231,31,284,201,61,365,645,250,52,425,151,257,68,238,330,42,98,100,164,240,21,15,112,90,31,450,350,154,44,105,63,365],[20,18,25,20,5,15,12,12,20,6,15,8,12,12,40,15,7,10,8,20,4,25,20,7,12,15,15,12,3,1,10,12,5,15,12,12,10,16,5,15]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Animal<\/th>\n      <th>Gestation<\/th>\n      <th>Longevity<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+---
+# Relationship between mammal gestation and longevity
+![](least-squares_regression_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
+
+Are there any outliers?
+---
+# Relationship between mammal gestation and longevity
+![](least-squares_regression_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+Are there any outliers?
+
+---
+# Get rid of the outlier
+
+
+```r
+MammalLongevity &lt;- MammalLongevity %&gt;% filter(Animal != "elephant") 
+MammalLongevity %&gt;%  
+  ggplot(aes(x=Gestation,y=Longevity)) + geom_point()
+```
+
+![](least-squares_regression_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+---
+# Fitting a Line
+
+
+```r
+MammalLongevity %&gt;%  ggplot(aes(x=Gestation,y=Longevity)) + 
+  geom_point() + geom_smooth(method="lm",se=FALSE)
+```
+
+![](least-squares_regression_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+
+---
+# Mammal Gestation and Longevity
+
+### The formula for the least-squares regression line is:
+
+$$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
+.pull-left[
+![](least-squares_regression_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+]
+.pull-right[
+What is the meaning behind the slope?
+
+]
+---
+# Mammal Gestation and Longevity
+
+### The formula for the least-squares regression line is:
+
+$$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
+.pull-left[
+![](least-squares_regression_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+]
+.pull-right[
+What is the meaning behind the slope?
+
+The slope indicates that the longevity of mammals is predicted to go up by 0.024 years for every extra day of gestation.
+]
+---
+# Mammal Gestation and Longevity
+
+### The formula for the least-squares regression line is:
+
+$$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
+.pull-left[
+![](least-squares_regression_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
+]
+.pull-right[
+What is the meaning behind the y-intercept?
+
+]
+---
+# Mammal Gestation and Longevity
+
+### The formula for the least-squares regression line is:
+
+$$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
+.pull-left[
+![](least-squares_regression_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+]
+.pull-right[
+What is the meaning behind the y-intercept
+
+The longevity the model predicts for 0 days of gestation is 8.009 years.
+]
+---
+class: center, inverse, middle
+
+# Interpreting Slope
+
+## For every one unit change in the x-variable (context), the y-variable is predicted to increase by *slope* (context).
+---
+class: center,inverse,middle
+
+# Interpreting Y-intercept
+
+## When the x variable (context) is zero, the y variable (context) is estimated to be *y-intercept*.
+---
+# Prediction
+
+
+#### $$ \widehat{Longevity} = 8.008714 + 0.024363 \text{ Gestation} $$
+
+A three-toed sloth has a gestational period of 183 days.  What is the predicted life expectancy?
+
+--
+
+
+#### $$ \widehat{Longevity} = 8.008714 + 0.024363 \cdot 183 = 12.5 \text{ years} $$
+![:scale 70%](http://brdo.com.ua/wp-content/uploads/2017/07/maxresdefault.jpg)
+---
+# Residuals
+
+### A three-toed sloth's life expectancy is actually 17 years.  Calculate the residual associated with the three-toed sloth. 
+
+--
+
+#### $$ \text{Residual} = \text{actual life expectancy} - \text{predicted life expectancy} $$
+
+#### $$ \text{Residual} = 17 - 12.5 = 4.5 \text{ years} $$
+
+
+--
+
+The actual life expectancy of the three-toed sloth is 4.5 years higher than the model predicts it to be.
+---
+# Extrapolation
+
+### We can use a reression line to predict the response `\(\hat{y}\)` for a specific value of the explanatory variable *x*.  The accuracy of the prediction depends on how much the data scatter around the line. 
+
+### While we *can* substitute any value of *x* into the equation of the regression line, we must exercise caution in making predictions outside the observed values of *x*.
+---
+
+&lt;img width="90%" height="90%" src="https://i.stack.imgur.com/3Ab7e.jpg"&gt;&lt;/img&gt;
+
+
+---
+
+&lt;img width="100%" height="100%" src="https://i.stack.imgur.com/4QwTj.png"&gt;&lt;/img&gt;
+
+---
+
+&lt;img width="100%" height="100%" src="https://i.stack.imgur.com/7oDyK.png"&gt;&lt;/img&gt;
+
+---
+
+&lt;center&gt;
+&lt;img width="65%" height="65%" src="https://i.stack.imgur.com/IQu3m.png"&gt;&lt;/img&gt;
+&lt;/center&gt;
+    </textarea>
+<script src="remark-latest.min.js"></script>
+<script src="custom.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

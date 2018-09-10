@@ -1,0 +1,2 @@
+"0","MammalLongevity %>% filter(Animal != ""elephant"") %>%  "
+"0","  ggplot(aes(x=Gestation,y=Longevity)) + geom_point()"

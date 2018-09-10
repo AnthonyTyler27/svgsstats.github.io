@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1536600312438.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E0F24FFA",
+    "lastKnownWriteTime" : 7308604914264011873,
+    "last_content_update" : 1536600312438,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "ACF8F32B",
+        "caption" : "possibilities",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=possibilities&cache_key=ACF8F32B",
+        "displayedObservations" : "400",
+        "environment" : "",
+        "object" : "possibilities",
+        "preview" : "0",
+        "totalObservations" : "400",
+        "variables" : "2"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

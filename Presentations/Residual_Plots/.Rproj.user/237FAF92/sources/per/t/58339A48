@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1536864059073.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1667352780",
+    "id" : "58339A48",
+    "lastKnownWriteTime" : 1536620546,
+    "last_content_update" : 1536620546,
+    "path" : "C:/Users/tylera/OneDrive - Shenandoah Valley Governor's School/DE Statistics/2 - Linear Regression/Least-Squares Regression/least-squares_regression.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "135,3",
+        "scrollLine" : "130"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

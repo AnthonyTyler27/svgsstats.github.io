@@ -1,0 +1,3 @@
+"0","theModel2 <- lm(gpa ~ study_time,data=gpa)"
+"0","regression_points <- get_regression_points(theModel2)"
+"0","regression_points"

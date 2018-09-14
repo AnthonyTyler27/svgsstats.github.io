@@ -1,0 +1,271 @@
+---
+title: "Residual Plots"
+subtitle: "Fitting a Line to Data"
+author: "7.1 to 7.3 in OI and 6.1.2 through 6.1.4 in MD"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    mathjax: "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"
+    css: ["default","default-fonts","my_theme.css"]
+    #css: ["default"] #,"tamu"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "custom.js"
+    chakra: "remark-latest.min.js"
+---
+```{r echo=FALSE, error=FALSE,warning=FALSE,message=FALSE}
+library(tidyverse)
+library(tibble)
+library(ggthemes)
+library(moderndive)
+knitr::opts_chunk$set(echo=FALSE,error=FALSE,warning=FALSE,fig.width=10,fig.height=7)
+theme_set(theme_few())
+
+load(url("http://www.lock5stat.com/datasets/MammalLongevity.rda"))
+
+```
+# Regression Vocabulary Review
+
+- ## Residuals
+
+- ## Slope
+
+- ## Y-intercept
+
+- ## Least-squares Regression
+
+---
+# Residuals
+
+## We want residuals to be:
+ - ### relatively small
+ - ### **no systematic pattern in the residuals**
+
+---
+# Residual Plots
+
+### A **residual plot** is a scatterplot of the residuals against the explanatory variable.  They help us assess how well a regression line fits the data. 
+
+---
+# Residual Plots
+```{r}
+MammalLongevity <- MammalLongevity %>% filter(Animal != "elephant")
+MammalLongevity %>% ggplot(aes(x=Gestation,y=Longevity)) + geom_point() + geom_smooth(method="lm",se=FALSE)
+```
+---
+# Residual Plots
+```{r}
+theModel <- lm(Longevity ~ Gestation, data=MammalLongevity)
+regression_points <- get_regression_points(theModel)
+residual_plot <- ggplot(regression_points,aes(x=Gestation,y=residual))+geom_point()+geom_hline(yintercept = 0, color="blue")
+residual_plot
+```
+---
+# Interpreting Residual Plots
+
+### A residual plot magnifies the deviations of the points from the line, making it easier to see unusual observations and patterns. 
+
+- The residual plot should show no obvious patterns (it should look random). 
+- The residuals should be relatively small in size. 
+
+--
+
+.center[
+<img height=80% width="80%" src="http://www.qualtrics.com/support/wp-content/uploads/2017/07/Screen-Shot-2017-07-19-at-9.56.45-AM.png"></img>
+]
+---
+class: center,inverse,middle
+
+# Any sort of pattern in the residuals is evidence that the current model is not appropriate. 
+---
+# Some Residual Plots
+
+<img src = "https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/132/2016/04/21214852/Figure7_8.png"></img>
+---
+class: center, inverse,middle
+
+# The number one tool for assessing whether a particular model is appropriate is the residual plot. 
+---
+# Standard deviation of the residuals
+
+### If we use a least-squares regression line to predict values of y given x, the **standard deviation of the residuals** measures the typical distance our actual y-values are from the model's predicted y values. 
+
+--
+
+### We often use the symbol $\sigma$ to represent this value.  For the mammal gestation versus longevity dataset, the value of $\sigma$ is:
+
+```{r}
+get_regression_summaries(theModel)$sigma
+
+```
+
+--
+
+### $\sigma$ has units equal to whatever the units of y are. 
+
+--
+
+### *Our model's predicted longevity at a given gestation duration varies by actual longevity, on average, by 5.081 years. *
+
+---
+# The role of $r^2$ in regression
+
+### The standard deviation of the residuals gives us a numerical estimate in the units of y for the average size of our prediction errors. $r^2$ is another numerical quantity that tells us how well the least-squares regression line predicts values of the response y.
+
+--
+
+### $r^2$, or the **coefficient of determination**, is the percentage of variation in the values of y that are accounted for by the model.
+
+---
+# Mammals and Longevity
+
+
+## About 27% of the variation in longevity are accounted for by its regression on gestation.  
+
+
+---
+# GPA and Study Time
+
+Suppose a researcher wanted to predict a student's GPA. 
+
+A small sample of student GPAs were collected as shown below. 
+
+.pull-left[
+```{r}
+gpa <- tribble(
+          ~study_time, ~gpa,
+          1,2.0,
+          2,1.5,
+          3,2.5,
+          5,3.5,
+          6,3.0,
+          8,4.0,
+          10,4.5)
+gpa %>% select(gpa) %>% knitr::kable(format="html")
+  
+```
+]
+
+.pull-right[
+If we had to predict the GPA of a student, then what would be best choice for prediction? 
+]
+
+---
+# GPA and Study Time
+
+Suppose a researcher wanted to predict a student's GPA. 
+
+A small sample of student GPAs were collected as shown below. 
+
+.pull-left[
+```{r}
+gpa <- tribble(
+          ~study_time, ~gpa,
+          1,2.0,
+          2,1.5,
+          3,2.5,
+          5,3.5,
+          6,3.0,
+          8,4.0,
+          10,4.5)
+gpa %>% select(gpa) %>% knitr::kable(format="html")
+  
+```
+]
+
+.pull-right[
+If we had to predict the GPA of a student, then what would be best choice for prediction? 
+
+The mean is the choice closest to all of these:
+
+```{r}
+mean(gpa$gpa)
+```
+
+]
+
+---
+# GPA and Study Time
+
+Using the mean as the choice, would produce a total amount of error of:
+
+```{r}
+gpa<- gpa %>% mutate(deviation = gpa - mean(gpa)) %>% mutate(deviation_squared=deviation^2) 
+
+gpa %>% select(-study_time) %>% knitr::kable(format="html")
+```
+
+Sum of deviations squared is: 
+```{r}
+sum(gpa$deviation_squared)
+```
+
+---
+# GPA and Study Time
+
+Now suppose we wish to improve upon this one variable best guess prediction by collecting another variable.   Let's suppose we have access to the amount of study time the sample of students has each week. 
+
+.pull-left[
+```{r}
+gpa %>% select(study_time, gpa) %>% knitr::kable(format="html")
+```
+]
+.pull-right[
+```{r}
+ggplot(gpa,aes(x=study_time,y=gpa)) + geom_point(size=8)+geom_smooth(method="lm",se=FALSE) + theme(axis.title=element_text(size=40),axis.text = element_text(size=30),axis.title.y=element_text(vjust = 5))
+```
+]
+
+---
+# GPA and Study Time
+Using the model to help predict GPA, would produce a total amount of error of:
+
+```{r}
+theModel2 <- lm(gpa ~ study_time,data=gpa)
+regression_points <- get_regression_points(theModel2)
+regression_points %>% select(study_time, gpa, gpa_hat,residual) %>% mutate(residual_squared = residual^2) %>% knitr::kable(format="html")
+
+
+```
+Sum of residuals squared is: 
+
+```{r}
+sum(regression_points$residual^2)
+```
+---
+# GPA and Study Time
+
+When using the mean, we had a total amount of error of 7. 
+
+--
+
+When using the model, we had a total amount of error of 0.749126. 
+
+--
+
+The error decreased by: 
+```{r echo = TRUE}
+7 - 0.749126
+```
+
+--
+
+Which is: 
+```{r echo=TRUE}
+6.250874/7
+```
+
+89%.  
+
+--
+
+So, using the model accounted for 89% of the variation in GPA. 
+
+---
+class: center,inverse,middle
+
+# 89% is $r^2$
+
+---

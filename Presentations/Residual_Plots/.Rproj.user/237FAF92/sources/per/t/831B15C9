@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1536863752414.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3876869423",
+    "id" : "831B15C9",
+    "lastKnownWriteTime" : 1536866091,
+    "last_content_update" : 1536866091950,
+    "path" : "C:/Users/tylera/OneDrive - Shenandoah Valley Governor's School/DE Statistics/2 - Linear Regression/Residual Plots/residual_plots.Rmd",
+    "project_path" : "residual_plots.Rmd",
+    "properties" : {
+        "cursorPosition" : "93,37",
+        "scrollLine" : "84",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

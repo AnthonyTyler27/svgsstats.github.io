@@ -1,0 +1,104 @@
+---
+title: "Residual Plots"
+subtitle: "Fitting a Line to Data"
+author: "7.1 to 7.3 in OI and 6.1.2 through 6.1.4 in MD"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default","default-fonts","my_theme.css"]
+    #css: ["default"] #,"tamu"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "custom.js"
+    chakra: "remark-latest.min.js"
+---
+```{r echo=FALSE, error=FALSE,warning=FALSE}
+library(tidyverse)
+library(tibble)
+library(ggthemes)
+library(moderndive)
+knitr::opts_chunk$set(echo=FALSE,error=FALSE,warning=FALSE,fig.width=10,fig.height=7)
+theme_set(theme_few())
+
+load(url("http://www.lock5stat.com/datasets/MammalLongevity.rda"))
+
+```
+# Regression Vocabulary Review
+
+- ## Residuals
+
+- ## Slope
+
+- ## Y-intercept
+
+- ## Least-squares Regression
+
+---
+# Residuals
+
+## We want residuals to be:
+ - ### relatively small
+ - ### **no systematic pattern in the residuals**
+
+---
+# Residual Plots
+
+### A **residual plot** is a scatterplot of the residuals against the explanatory variable.  They help us assess how well a regression line fits the data. 
+
+.pull-left[
+```{r}
+MammalLongevity <- MammalLongevity %>% filter(Animal != "elephant")
+MammalLongevity %>% ggplot(aes(x=Gestation,y=Longevity)) + geom_point() + geom_smooth(method="lm",se=FALSE)
+```
+]
+
+--
+
+.pull-right[
+```{r}
+theModel <- lm(Longevity ~ Gestation, data=MammalLongevity)
+regression_points <- get_regression_points(theModel)
+residual_plot <- ggplot(regression_points,aes(x=Gestation,y=residual))+geom_point()+geom_hline(yintercept = 0, color="blue")
+residual_plot
+```
+]
+---
+# Interpreting Residual Plots
+
+### A residual plot magnifies the deviations of the points from the line, making it easier to see unusual observations and patterns. 
+
+- The residual plot should show no obvious patterns (it should look random). 
+- The residuals should be relatively small in size. 
+.center[
+<img height=80% width="80%" src="http://www.qualtrics.com/support/wp-content/uploads/2017/07/Screen-Shot-2017-07-19-at-9.56.45-AM.png"></img>
+]
+---
+class: center,inverse,middle
+
+# Any sort of pattern in the residuals is evidence that the current model is not appropriate. 
+---
+# Some Residual Plots
+
+<img src = "https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/132/2016/04/21214852/Figure7_8.png"></img>
+---
+class: center, inverse,middle
+
+# The number one tool for assessing whether a particular model is appropriate is the residual plot. 
+---
+# Standard deviation of the residuals
+
+### If we use a least-squares regression line to predict values of y given x, the **standard deviation of the residuals** measures the typical distance our actual y-values are from the model's predicted y values. 
+
+### In R, this will be represented by
+```{r}
+
+summary(theModel)
+```
+
+```{r}
+get_regression_summaries(theModel)
+
+```
+

@@ -1,0 +1,4 @@
+"0","theModel <- lm(Longevity ~ Gestation, data=MammalLongevity)"
+"0","regression_points <- get_regression_points(theModel)"
+"0","residual_plot <- ggplot(regression_points,aes(x=Gestation,y=residual))+geom_point()+geom_hline(yintercept = 0, color=""blue"")"
+"0","residual_plot"

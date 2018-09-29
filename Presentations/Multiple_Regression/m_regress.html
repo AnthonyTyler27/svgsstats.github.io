@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Multiple Regression</title>
+    <meta charset="utf-8">
+    <meta name="author" content="MD 7.1" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https:\\svgsstats.github.io\Styles\my_theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Multiple Regression
+### MD 7.1
+
+---
+
+
+# Why multiple regression?
+
+--
+
+###	Using more explanatory variables will let us better predict a response variable. 
+
+--
+
+###	We will be able to explore the effects of an explanatory variable on a response variable while controlling for other explanatory variables. 
+
+--
+
+###	Allows us to utilize categorical variables in addition to quantitative variables to help us better make predictions. 
+
+---
+# Recap from Homework
+
+### How do you interpret the weight/slope on a variable in a multiple regression model?
+
+--
+
+&lt;p class="inverse border white tab" style="font-family: 'Yanone Kaffeesatz';"&gt;Taking all other variables in our model into account, for every increase in one unit of ________, there is a predicted (or associated) increase/decrease of ________ in ________ (y variable).&lt;/p&gt;
+
+--
+
+### What is overfitting? 
+
+--
+
+&lt;p class="tab" style="font-family: 'Yanone Kaffeesatz';font-size: 140%;"&gt;When a model becomes tailored to the specific dataset it was built on, and becomes useless to be applied to data outside of these values.&lt;/p&gt;
+
+---
+# Overfitting
+
+&lt;center&gt;
+&lt;img width="80%" src="https://upload.wikimedia.org/wikipedia/commons/6/68/Overfitted_Data.png"&gt;&lt;/img&gt;
+&lt;/center&gt;
+
+---
+# Overfitting Excel Example
+
+
+---
+# Recap from Homework
+
+### What is adjusted r&lt;sup&gt;2&lt;/sup&gt; used for?
+
+--
+
+&lt;p class="tab" style="font-family: 'Yanone Kaffeesatz'; font-size: 140%;"&gt; A modified version of r&lt;sup&gt;2&lt;/sup&gt; that will only increase when a new variable is added if the new variable helps the model more than we expect by random chance. &lt;/p&gt;
+
+--
+
+### What about p-values? 
+
+&lt;p class="tab" style="font-family: 'Yanone Kaffeesatz'; font-size: 140%;"&gt; We can use p-values to determine which variables influence the response variable and which variables do not seem to (when controlling for other variables)&lt;/p&gt;
+
+---
+# Cereal
+
+
+
+### Suppose we wanted to predict the number of calories that a cereal would have using only the amount of Sugar present.   How close could we get?
+
+--
+
+
+```r
+sugar_model &lt;- lm(Calories ~ Sugars, data = cereal)
+get_regression_summaries(sugar_model)
+```
+
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; r_squared &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; adj_r_squared &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mse &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; rmse &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; sigma &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; statistic &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; p_value &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; df &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 0.436 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.416 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 661.1218 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.71229 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.615 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.623 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+--
+
+Our predictions of calories from sugar would, on average, vary from actual calories by 27 calories. 
+---
+# Cereal
+
+## Now, go on Canvas, and click the link to the Cereal Problem (under modules).   Construct a model with all quantitative variables.  Answer these questions. 
+
+### How close can we predict calories using all quantiative variables? 
+
+### How close does your model predict the randomly selected cereal? 
+
+---
+# Dummy Variables 
+
+### A categorical variable can be converted to a numerical variable and then utilized in regression by making use of a *dummy variable*. 
+
+--
+
+### Basically, each level of a categorical variable gets its own variable name.  The value of the variable is 1 when that observations contains that characteristic and 0 when that observation does not.  
+
+--
+
+### For instance, a column named **Gender** could be *dummified* into a column called **GenderMale** that would be 1 when the person is male and 0 when the person is not male (female).
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

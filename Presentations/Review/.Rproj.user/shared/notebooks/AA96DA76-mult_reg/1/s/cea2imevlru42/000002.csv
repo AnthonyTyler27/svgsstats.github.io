@@ -1,0 +1,27 @@
+"0","```r
+library(ggplot2)
+library(dplyr)
+library(broom)
+library(readr)
+
+cereal <- read_rds(\"http\")
+get_regression_table <- function(model) {
+  tidier <- tidy(model) %>% rename(std_error = std.error, p_value = p.value)
+  return(tidier)
+}
+
+get_regression_summaries <- function(model) {
+  tidier <- glance(model) %>% select(r.squared:df) %>% rename(r_squared = r.squared, adj_r_squared = adj.r.squared, p_value = p.value)
+  return(tidier)
+}
+
+get_regression_points <- function(model){
+  tidier <- augment(model) 
+  a <- colnames(tidier)[1]
+  b <- paste(a,\"_hat\",sep=\"\")
+  tidier <- tidier %>% rename(residual=.resid) %>% rename_at(match(\".fitted\",colnames(tidier)),~b) %>% select(1:residual,-.se.fit)
+  return(tidier)
+}
+
+
+```"

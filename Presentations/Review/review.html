@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Things You’re Supposed to Know</title>
+    <meta charset="utf-8">
+    <meta name="author" content="MD 7.1.2" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https:\\svgsstats.github.io\Styles\my_theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Things You’re Supposed to Know
+### MD 7.1.2
+
+---
+
+
+# Describing Scatterplots
+
+### Must address direction, strength, and form in context.
+
+---
+
+# What is the correlation coefficient?
+
+- ### Between -1 and 1. 
+- ### Unit-less
+- ### Can measure direction of relationship
+- ### Can measure strength of the relationship
+
+---
+class: center, inverse
+
+# Interpreting Slope
+
+## For every one unit change in the x-variable (context), the y-variable is predicted to increase by *slope* (context).
+
+--
+
+## Slope gives us **more than just direction**.  It quantifies how changes in one variable are associated with changes in another. 
+
+---
+class: center,inverse,middle
+
+# Interpreting Y-intercept
+
+## When the x variable (context) is zero, the y variable (context) is estimated to be *y-intercept*.
+
+---
+# Residuals
+
+## A **residual** is the difference between an observed value of the response variable and the value predicted by the regression line. 
+
+
+### $$ \text{residual} = \text{observed y} - \text{predicted y} $$
+
+---
+# Residual Plots
+
+### A **residual plot** is a scatterplot of the residuals against the explanatory variable.  They help us assess how well a regression line fits the data. 
+
+---
+# Interpreting Residual Plots
+
+### A residual plot magnifies the deviations of the points from the line, making it easier to see unusual observations and patterns. 
+
+- The residual plot should show no obvious patterns (it should look random). 
+- The residuals should be relatively small in size. 
+
+--
+
+.center[
+&lt;img height=80% width="80%" src="http://www.qualtrics.com/support/wp-content/uploads/2017/07/Screen-Shot-2017-07-19-at-9.56.45-AM.png"&gt;&lt;/img&gt;
+]
+---
+class: center,inverse,middle
+
+# Any sort of pattern in the residuals is evidence that the current model is not appropriate. 
+---
+class: center, inverse,middle
+
+# The **only** tool we've used for assessing whether a particular model is appropriate is the scatterplot and the residual plot. 
+
+
+---
+# Standard deviation of the residuals
+
+### If we use a least-squares regression line to predict values of y given x, the **standard deviation of the residuals** measures the typical distance our actual y-values are from the model's predicted y values. 
+
+---
+# Formula Sentence
+
+&lt;p class="border inverse white tab"&gt;Predictions of &lt;strong&gt;y-variable&lt;/strong&gt; using the model will vary from actual &lt;strong&gt;y-values&lt;/strong&gt; on average by &lt;strong&gt;standard deviation of residuals&lt;/strong&gt; units. &lt;/p&gt;
+
+---
+# The role of `\(r^2\)` in regression
+
+### The standard deviation of the residuals gives us a numerical estimate in the units of y for the average size of our prediction errors. 
+
+### `\(r^2\)` is another numerical quantity that tells us how well the least-squares regression line predicts values of the response y.
+
+--
+
+### `\(r^2\)`, or the **coefficient of determination**, is the percentage of variation in the values of y that are accounted for by the model.
+
+---
+# When interpreting `\(r^2\)`
+
+### Say - 
+
+&lt;p class = "inverse white tab border"&gt; _____ percent of variation in the values of &lt;strong&gt;insert y variable here&lt;/strong&gt; are accounted for by the linear model.&lt;/p&gt;
+
+---
+# Multiple Regression
+
+### How do you interpret the weight/slope on a variable in a multiple regression model?
+
+&lt;p class="inverse border white tab" &gt;Taking all other variables in our model into account, for every increase in one unit of ________, there is a predicted (or associated) increase/decrease of ________ in ________ (y variable).&lt;/p&gt;
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

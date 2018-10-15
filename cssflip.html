@@ -1,0 +1,201 @@
+<html>
+<head>
+<style>
+.flip-container {
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
+
+	border: 1px solid #ccc;
+}
+
+	.flip-container:hover .flipper,  
+  .flip-container.hover .flipper {
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 125px;
+	height: 150px;
+}
+
+.flipper {
+	-webkit-transition: 0.6s;
+	-webkit-transform-style: preserve-3d;
+
+	-moz-transition: 0.6s;
+	-moz-transform-style: preserve-3d;
+  
+  -o-transition: 0.6s;
+	-o-transform-style: preserve-3d;
+
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+.front, .back {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.front {
+	background-color: red;
+	z-index: 2;
+}
+
+.back {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+
+
+	background: #c8c8c8;
+}
+
+.front .name {
+	font-size: 2em;
+	display: inline-block;
+	background: rgba(33, 33, 33, 0.9);
+	color: #f8f8f8;
+	font-family: Courier;
+	padding: 5px 10px;
+	border-radius: 5px;
+	bottom: 60px;
+	left: 10%;
+	position: absolute;
+	text-shadow: 0.1em 0.1em 0.05em #333;
+
+	-webkit-transform: rotate(-20deg);
+	-moz-transform: rotate(-20deg);
+  -o-transform: rotate(-20deg);
+	transform: rotate(-20deg);
+}
+
+
+
+.back-title {
+	font-weight: bold;
+	color: #00304a;
+
+	left: 0;
+	right: 0;
+	text-align: center;
+	text-shadow: 0.1em 0.1em 0.05em #acacac;
+	font-family: Courier;
+	font-size: 100px;
+position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.back p {
+	position: absolute;
+	
+	left: 0;
+	right: 0;
+	text-align: center;
+	padding: 0 20px;
+  font-family: arial;
+  line-height: 2em;
+
+}
+</style>
+</head>
+<body>
+<div align="center">
+<table><tr><td>
+<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+  <div class="flipper">
+    <div id="theFront1" class="front">
+      <span class="name">SVGS</span>
+    </div>
+    <div class="back">
+   
+      <div id="number1" class="back-title">4</div>
+      
+    </div>
+  </div>
+</div>
+</td><td>
+<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+  <div class="flipper">
+    <div id="theFront2" class="front">
+      <span class="name">SVGS</span>
+    </div>
+    <div class="back">
+   
+      <div id="number2" class="back-title">4</div>
+      
+    </div>
+  </div>
+</div>
+</td>
+<td>
+<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+  <div class="flipper">
+    <div id="theFront3" class="front">
+      <span class="name">SVGS</span>
+    </div>
+    <div class="back">
+   
+      <div id="number3" class="back-title">4</div>
+      
+    </div>
+  </div>
+</div>
+</td>
+<td>
+<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+  <div class="flipper">
+    <div id="theFront4" class="front">
+      <span class="name">SVGS</span>
+    </div>
+    <div class="back">
+   
+      <div id="number4" class="back-title">4</div>
+      
+    </div>
+  </div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+<div align="center">
+<button onclick="newCards()">Get New Cards</button>
+</div>
+<script type="text/javascript">
+function getCard(whichOne) {
+	theCard = Math.floor(Math.random()*10)+1;
+	if (theCard<=5){
+		document.getElementById('number'+(""+whichOne)).innerHTML = theCard+5;
+		document.getElementById('theFront'+(""+whichOne)).style.backgroundColor = "Red";
+	} else {
+		document.getElementById('number'+(""+whichOne)).innerHTML = theCard+20;
+		document.getElementById('theFront'+(""+whichOne)).style.backgroundColor = "Black";
+	}
+}
+function newCards(){
+	getCard(1);
+	getCard(2);
+	getCard(3);
+	getCard(4);
+}
+newCards();
+
+</script>
+</body>

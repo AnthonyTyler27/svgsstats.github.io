@@ -1,0 +1,279 @@
+---
+title: "Binomial Distributions"
+subtitle: "A Discrete Probability Distribution"
+author: ""
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    mathjax: "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"
+    css: ["default","default-fonts","https://svgsstats.github.io/Styles/my_theme.css"]
+    #css: ["default"] #,"tamu"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "custom.js"
+    chakra: "remark-latest.min.js"
+---
+```{r echo=FALSE, error=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+```
+# Warmup
+
+The mean cost of textbooks for a class at a university is $176 with a standard deviation of $62.  Assuming that textbooks prices are normally distributed, find the following: 
+
+1. What portion of classes have textbooks that cost more than $200? 
+
+2. A class whose textbook is in the top 5% of all textbook costs has textbooks that cost more than what value? 
+
+3. The middle 80% of textbook costs are between what two values? 
+---
+# Warmup
+
+The mean cost of textbooks for a class at a university is $176 with a standard deviation of $62.  Assuming that textbooks prices are normally distributed, find the following: 
+
+(1)  What portion of classes have textbooks that cost more than $200? 
+
+`r 1-pnorm(200,176,62)`
+
+
+(2)  A class whose textbook is in the top 5% of all textbook costs has textbooks that cost more than what value? 
+
+`r qnorm(0.95,176,62)`
+
+
+(3)  The middle 80% of textbook costs are between what two values? 
+
+```{r echo=FALSE}
+qnorm(0.10,176,62)
+qnorm(0.9,176,62)
+```
+---
+# Continuous vs Discrete Random Variables
+
+<p class="inverse border white tab">
+Discrete random variables are random variables that take on a countable list of values
+</p>
+
+For example: 
+- Number of heads a coin flip gets in 50 flips. 
+
+- Number of individuals with a particular disease in a sample of size 1000. 
+---
+# Continuous vs Discrete Random Variables
+<p class="inverse border white tab">
+Continuous random variables are random variables which take on infinitely many values</p> 
+
+For example: 
+- How much time it takes for popcorn to finish popping
+
+- The weight of a randomly selected labradoodle. 
+<img src="https://vetstreet.brightspotcdn.com/dims4/default/7d8a842/2147483647/thumbnail/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F1c%2F854d80a8b511e0a0d50050568d634f%2Ffile%2Flabradoodle-2-645mk070111.jpg" width="50%"></img>
+---
+# Normal distributions are one distribution that describes some continuous random variables. 
+
+<br/><br/><br/>
+
+# Binomial distributions are one distribution that describes some discrete random variables. 
+---
+# What is a Binomial Setting? 
+
+A **binomial setting** arises when we perform several independent trials of the same chance process and record the number of times that a particular outcome occurs.
+
+The four conditions are: 
+- **Binary** - The possible outcomes of each trial can be classified as "success" or "failure".
+- **Independent** - Trials must be independent.  Knowing the outcome of one trial must not have any effect on the result of any other trial. 
+- **Number** - The number of trials *n* must be fixed in advance. 
+- **Success** - The probability of success *p* must be the same for every trial. 
+
+--
+
+# BINS!
+---
+# Is X a Binomial random variable? 
+
+- Observe number of heads when flipping a coin 50 times.  X = number of heads
+
+---
+# Is X a Binomial random variable? 
+
+- Observe sex of next 50 children born at a local hospital.   X = number of girls
+
+---
+# Is X a Binomial random variable? 
+
+- Ten-question quiz has five True/False questions, and five multiple-choice questions each with four possible choices.  Student randomly picks an answer for every questions.   X = number of answers that are correct
+
+---
+# Is X a Binomial random variable? 
+
+- Four students are randomly picked without replacement from a student body containing 35 juniors and 35 seniors.  X = number of seniors among the four selected students. 
+
+---
+# Is X a Binomial random variable? 
+
+- A die rolled until the number 5 is chosen.  X = number of rolls it takes before a 5 is rolled. 
+
+---
+# Motivating Example
+
+Each child of a particular pair of parents has probability 0.25 of having type O blood. Mendel said that children receive genes from each of their parents independently. If these parents have 5 children, the count X of children with type O blood is a binomial random variable with n = 5 trials and probability p = 0.25 of a success on each trial. In this setting, a child with type O blood is a “success” (S) and a child with another blood type is a “failure” (F). 
+
+What’s P(X = 2)?
+
+--
+
+P(SSFFF) = (0.25)(0.25)(0.75)(0.75)(0.75) = 0.02637
+
+--
+
+However, there are a number of different arrangements in which 2 out of the 5 children have type O blood: 
+
+SSFFF SFSFF SFFSF SFFFS FSSFF
+FSFSF FSFFS FFSSF FFSFS FFFSS
+
+--
+
+There are 10 different arrangements, each with probability of 0.02637 of occurring.  So, $P(X = 2) = 10(0.25)^2(0.75)^3 = 0.2637$
+---
+# Technology
+
+Just like with normal distribution, we can use R to speed up the calculation. 
+
+```{r}
+dbinom(x=2,size=5,prob=0.25)
+```
+
+---
+# R Commands in Binomial Distributions
+
+```{r eval=FALSE}
+dbinom(x,size,prob)
+```
+This command will give the probability of getting exactly *x* successes in *size* trials with probability of success of *prob*. 
+
+```{r eval=FALSE}
+pbinom(q,size,prob)
+```
+This command will give the probability of getting less than or equal to *q* successes in *size* trials with probability of success of *prob*. 
+
+```{r eval=FALSE}
+qbinom(p,size,prob)
+```
+This command will give you the smallest *x* value such that P(X >= x) is greater than *p*. Put another way, the number of successes below which at least p% of options lie. 
+
+---
+# Some Examples
+
+Each child of a particular pair of parents has probability 0.25 of having blood type O. Suppose the parents have 5 children
+
+(a) Find the probability that exactly 3 of the children have type O blood.
+
+--
+```{r}
+dbinom(x=3,size=5,prob=0.25)
+```
+
+
+---
+# Some Examples
+
+Each child of a particular pair of parents has probability 0.25 of having blood type O. Suppose the parents have 5 children
+
+(b) Should the parents be surprised if more than 3 of their children have type O blood?
+
+--
+
+```{r}
+1 - pbinom(q=3,size=5,prob=0.25)
+```
+
+
+---
+# SOL Guessing?
+
+"I guessed on the entire SOL and still passed," says hypothetical student. 
+
+We wish to determine the probability that a student could actually do this. A previous version of the Algebra 1 SOL had 50 multiple choice questions and a student needed to score a 54% to pass it (I hope this angers you).  There were 4 options for each question.
+
+
+(a)  If a student flat out guessed on all 50 questions, what are the chances that they could pass the SOL? 
+
+--
+```{r}
+0.54*50
+
+1 - pbinom(26,50,0.25)
+```
+
+---
+# SOL Guessing?
+
+"I guessed on the entire SOL and still passed," says hypothetical student. 
+
+We wish to determine the probability that a student could actually do this. A previous version of the Algebra 1 SOL had 50 multiple choice questions and a student needed to score a 54% to pass it (I hope this angers you).  There were 4 options for each question.
+
+
+(b)  What if the student was able to eliminate just one answer on each of the 50 questions, what are the chances that they could pass the SOL?
+
+--
+```{r}
+1 - pbinom(26,50,1/3)
+```
+
+
+---
+# SOL Guessing?
+
+"I guessed on the entire SOL and still passed," says hypothetical student. 
+
+We wish to determine the probability that a student could actually do this. A previous version of the Algebra 1 SOL had 50 multiple choice questions and a student needed to score a 54% to pass it (I hope this angers you).  There were 4 options for each question.
+
+
+(c)  What if they could eliminate two answers? 
+
+--
+```{r}
+1 - pbinom(26,50,0.5)
+```
+
+
+---
+# SOL Guessing?
+
+"I guessed on the entire SOL and still passed," says hypothetical student. 
+
+We wish to determine the probability that a student could actually do this. A previous version of the Algebra 1 SOL had 50 multiple choice questions and a student needed to score a 54% to pass it (I hope this angers you).  There were 4 options for each question.
+
+
+(d)  What is the range of correct answers that the middle 95% of test-takers would get on the Algebra 1 SOL (assuming that they guessed)
+
+--
+```{r}
+qbinom(0.025,50,0.25)
+qbinom(0.975,50,0.25)
+```
+
+
+---
+# Another Example
+
+A blind-folded marksman finds that on average he hits the target 80% of the time.  If he fires 4 shots, find the probability that he has
+
+(a) more than 2 hits?  
+
+--
+```{r}
+1 - pbinom(2,4,0.80)
+```
+
+
+(b) at least 3 misses? 
+
+--
+```{r}
+1 - pbinom(2,4,0.20)
+```
+
+
+

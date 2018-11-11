@@ -1,0 +1,1 @@
+"0","simulate <- rbinom(n=10000, size=100, prob=0.5)"

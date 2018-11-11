@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3147232720",
+    "hash" : "4161339099",
     "id" : "5678A6EA",
-    "lastKnownWriteTime" : 1541965620,
-    "last_content_update" : 1541965620102,
+    "lastKnownWriteTime" : 1541966452,
+    "last_content_update" : 1541966452686,
     "path" : "C:/Users/Anthony/OneDrive - Shenandoah Valley Governor's School/DE Statistics/4 - Probability/Binomial Distributions/binomial.Rmd",
     "project_path" : "binomial.Rmd",
     "properties" : {
-        "cursorPosition" : "401,2",
-        "scrollLine" : "390"
+        "cursorPosition" : "384,61",
+        "scrollLine" : "377"
     },
     "relative_order" : 1,
     "source_on_save" : false,

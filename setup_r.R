@@ -1,10 +1,8 @@
 install.packages(c("tidyverse","babynames","gganimate","gapminder",
 "knitr","fivethirtyeight","moderndive","broom","corrplot","officer",
 "shiny","skimr","janitor","rstatix","stargazer","Lock5withR","yarrr",
-"learnr","ggally","ggpubr","devtools","colourpicker","datapasta","esquisse"))
+"learnr","GGally","ggpubr","devtools","colourpicker","datapasta","esquisse","remotes"))
 
-
-install.packages("remotes")
 remotes::install_github("andrewpbray/oilabs")
 devtools::install_github("daranzolin/ViewPipeSteps")
 remotes::install_github("ThinkR-open/remedy")

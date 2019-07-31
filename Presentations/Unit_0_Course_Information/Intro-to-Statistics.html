@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
     <title>Introduction to Statistics</title>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta name="author" content="Anthony Tyler" />
-    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -16,17 +16,19 @@ class: center, middle, inverse, title-slide
 
 ---
 
+
+
+
 # General Course Information
 
 --
 
-- Syllabus can be downloaded from [Canvas](https://svgs.instructure.com/courses/203). Read it. 
+- Syllabus can be downloaded from [Canvas](https://svgs.instructure.com/courses/271). Read it. 
 
 --
 
 
-- This course will utilize three different online textbooks  
-(which can all be found on [Canvas](https://svgs.instructure.com/courses/203))
+- There are three different online textbooks that we will utilize as sources. (which can all be found on [Canvas](https://svgs.instructure.com/courses/271))
 
 --
 
@@ -42,40 +44,38 @@ class: center, middle, inverse, title-slide
 
 --
 
-- All course content can be found on [Canvas](https://svgs.instructure.com/courses/203).  Be sure to reference the calendar, so you can stay up on due dates.
+- You are expected to check Canvas messenger and your e-mail each school day.  
 
 --
-
-- All communication with the instructor should be done using the Canvas messenger or e-mail (tylera@svgs.k12.va.us).  You are expected to check Canvas messenger and your e-mail each school day.  
 
 ---
 # What will this course be like? 
 
 --
 
-- ### Statistics is **not** like other math classes
+- Statistics is **not** like other math classes
 
 --
 
-- ### Spiral approach
+- Technology Heavy
 
 --
 
-- ### Variety of small projects throughout the course
+- Variety of small projects throughout the course
 
 ---
 # Technology Needs
 
-- We will utilize both ![:scale 5%](https://www.r-project.org/logo/Rlogo.svg) and ![:scale 10%](https://www.rstudio.com/wp-content/uploads/2014/07/RStudio-Logo-Blue-Gradient.png)
+- We will utilize both ![:scale 5%](https://www.r-project.org/logo/Rlogo.svg) and ![:scale 12%](https://www.rstudio.com/wp-content/uploads/2014/07/RStudio-Logo-Blue-Gradient.png)
 in this course.  
 
 --
   
-  R is the software that will do most of our statistical heavy lifting.  RStudio is software that will make R a *little* more user friendly for us. 
+  R is the software that will do most of our statistical heavy lifting.  RStudio is software that will make R more user friendly for us. 
   
 --
 
-- We will also use ![:scale 5%](https://banner2.kisspng.com/20180331/bce/kisspng-microsoft-excel-microsoft-project-logo-microsoft-w-excel-5abfec581e5118.3452195915225273201242.jpg) at times.
+- We will also ![:scale 8%](https://www.stukent.com/wp-content/uploads/2014/07/excel-icon-300x175.jpg) at times.
 
 --
 
@@ -165,26 +165,24 @@ class: middle
 
 --
 
-- ### Data are (*data* is the plural of *datum*) everywhere!  You will have to make decisions based on data, or evaluate decisions someone else has made based on data in every field. 
-
---
-
-- ### Data are a set of measurements taken on a set of individual units.
+- ### Data is a set of measurements taken on a set of individual units.
 
 --
 
 - ### Data is typically stored and presented in a dataset, comprised of **variables** measured on **cases**. 
 
+???
+Data is everywhere!  You will have to make decisions based on data, or evaluate decisions someone else has made based on data in every field. 
 ---
 # Countries of the World
-&lt;table&gt;
+&lt;table class="table" style="font-size: 20px; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; continent &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; lifeExpectancy &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; population &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; gdp_per_capita &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Continent &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Life Expectancy &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Population in millions &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GDP per Capita &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
@@ -192,74 +190,76 @@ class: middle
    &lt;td style="text-align:left;"&gt; Afghanistan &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 43.828 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 31889923 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 31.9 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 974.5803 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Albania &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 76.423 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3600523 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.6 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 5937.0295 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Algeria &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 72.301 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 33333216 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33.3 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 6223.3675 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Angola &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 42.731 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 12420476 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.4 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 4797.2313 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Argentina &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Americas &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 75.320 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 40301927 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 40.3 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 12779.3796 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Oceania &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 81.235 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 20434176 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.4 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 34435.3674 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Austria &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 79.829 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 8199783 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.2 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 36126.4927 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Bahrain &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 75.635 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 708573 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.7 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 29796.0483 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Bangladesh &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 64.062 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 150448339 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 150.4 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1391.2538 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Belgium &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 79.441 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 10392226 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.4 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 33692.6051 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
+
 ---
 # Countries of the World
 
@@ -276,14 +276,15 @@ class: middle
   
   
   - In the countries of the world data set, which variables are categorical and which are quantitative?
-&lt;table&gt;
+
+&lt;table class="table" style="font-size: 20px; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; country &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; continent &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; lifeExpectancy &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; population &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; gdp_per_capita &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Country &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Continent &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Life Expectancy &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Population in millions &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GDP per Capita &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
@@ -291,42 +292,49 @@ class: middle
    &lt;td style="text-align:left;"&gt; Afghanistan &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Asia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 43.828 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 31889923 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 31.9 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 974.5803 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Albania &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Europe &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 76.423 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3600523 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.6 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 5937.0295 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Algeria &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 72.301 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 33333216 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33.3 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 6223.3675 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Angola &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Africa &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 42.731 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 12420476 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.4 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 4797.2313 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-  
+
 ---
 # Countries of the World
-![](Intro_to_Statistics_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+![](Intro-to-Statistics_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
 ---
 class: center
 ### Countries of the World
-![](Intro_to_Statistics_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+![](Intro-to-Statistics_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
 Red line indicates the USA life expectancy. 
 ---
+
+```r
+# Didn't get past this in class
+```
+
+
+
 # Two Types of Categorical Data
 
 --
@@ -345,11 +353,32 @@ Red line indicates the USA life expectancy.
   What is your favorite pizza topping?
 
 ---
+# Two Types of Quantitative Data
+
+--
+
+- **Discrete** data is data that can only take on whole non-negative numbers (0, 1, 2, ...).  This typically represents counts. 
+
+--
+
+![](https://lc.gcumedia.com/hlt362v/the-visual-learner/images/discrete-data.png)
+
+---
+# Two Types of Quantitative Data
+
+- **Continuous** data is data that typically represents measreuments.  It has an infinite number of possible values within a selected range. 
+
+--
+
+![](https://lc.gcumedia.com/hlt362v/the-visual-learner/images/continous-data.png)
+
+---
 # Data Around You
 
 - ### Think of a potential dataset that you would be interested in analyzing
   - #### What are the cases?
   - #### What are the variables?
+  - #### What type of data are your variables?
   - #### What interesting questions could it help you answer?
 
 ---
@@ -358,29 +387,73 @@ Red line indicates the USA life expectancy.
 - ### Read the syllabus on Canvas
 - ### Install Microsoft Office (SVGS Student Resources), R, and RStudio.
 
+
 ---
 # Emergency Procedures
     </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="remark-latest.min.js"></script>
 <script src="custom.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
 "highlightLines": true,
-"countIncrementalSlides": false
+"countIncrementalSlides": false,
+"slideNumberFormat": ""
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
-(function() {
-  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
   if (!r) return;
   s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
   d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
 })();</script>
 
 <script>
 (function() {
-  var i, text, code, codes = document.getElementsByTagName('code');
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
   for (i = 0; i < codes.length;) {
     code = codes[i];
     if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
@@ -394,14 +467,15 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     i++;
   }
-})();
+};
+slideshow._releaseMath(document);
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
 (function () {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
   if (location.protocol !== 'file:' && /^https?:/.test(script.src))
     script.src  = script.src.replace(/^https?:/, '');
   document.getElementsByTagName('head')[0].appendChild(script);

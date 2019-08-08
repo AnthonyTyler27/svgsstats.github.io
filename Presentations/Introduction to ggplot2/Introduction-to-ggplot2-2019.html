@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Visualization with ggplot2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="3.1 to 3.3 of MD and 3.1 to 3.4 of R4DS" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Visualization with ggplot2
+### 3.1 to 3.3 of MD and 3.1 to 3.4 of R4DS
+
+---
+
+
+
+# Loading the Package
+
+In order to access any of the functions, we need to first load the library into the R session.  You'll always need to do this first whenever using `ggplot`. 
+
+
+```r
+library(ggplot2)
+```
+
+--
+
+For these practice problems, we're going to make use of a dataset that is built into ggplot called `mpg`.
+
+Use the help feature of RStudio to read about what this data set represents. 
+
+--
+
+
+```r
+?mpg 
+```
+
+---
+
+You can also use RStudio's View() function to get an idea of what is actually in this dataset. 
+
+---
+# ggplot2 Basics
+
+**ggplot2** is based on the **grammar of graphics**, the idea that you can build every graph from the same few components:
+- a data set
+- a set of geoms (visual marks that represent data points)
+- a coordinate system
+
+![:scale 60%](3comps.png)
+
+---
+
+To display the data values, we map variables in the data set to aesthetic properties of the geom like **size**, **color**, and **x**/**y** locations. 
+
+---
+# Our first plot
+
+Run the following command in your R Console. 
+
+
+```r
+ggplot(mpg, aes(x=displ,y=hwy)) +
+  geom_point()
+```
+
+--
+
+![](Introduction-to-ggplot2-2019_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+---
+# Structure of a call to ggplot
+
+
+```r
+ggplot(                     )
+```
+
+Note that we first called ggplot. 
+---
+# Structure of a call to ggplot
+
+
+```r
+ggplot(mpg,                 )
+```
+
+Note that we first called ggplot.
+
+The first argument is the name of the dataset.
+
+---
+# Structure of a call to ggplot
+
+
+```r
+ggplot(mpg,aes(x=displ,y=hwy))
+```
+
+Note that we first called ggplot.
+
+The first argument is the name of the dataset.
+
+The second argument is a call to aes()
+
+---
+# Aesthetics
+
+Aesthetics are mappings of visual attributes of the graph to variables.  There are many different aesthetics, but the ones we will most commonly use are: 
+- x, y
+- color
+- fill
+- linetype
+- size
+
+---
+# Structure of a call to ggplot
+
+
+```r
+ggplot(mpg,aes(x=displ,y=hwy)) +
+  geom_point()
+```
+
+
+We then add a layer to the graph.  Layers are specific types of geoms.
+
+--
+
+Other geoms include: 
+- geom_density()
+- geom_dotplot()
+- geom_histogram()
+- geom_bar()
+- geom_boxplot()
+- etc.
+
+---
+class: inverse, center, middle
+# You try!
+
+### See if you can construct a scatterplot between the city miles per gallon and the highway miles per gallon in the mpg dataset.
+
+---
+class: inverse, center, middle
+# Try another!
+
+### R has a built-in dataset by the name of `faithful`.  View the help file description of the dataset, and use the View() function to inspect it. 
+
+### Construct a scatterplot of eruptions vs waiting.
+
+---
+# Aesthetic - Color
+
+We can map a 3rd dimension onto our scatterplot through use of the **color** attribute.
+
+
+```r
+ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
+  geom_point()
+```
+
+--
+
+![](Introduction-to-ggplot2-2019_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+---
+# Aesthetic - Coloring Points
+
+If you want to take the regular points and color them differently, then you can set the color inside of the geom_point() layer. 
+
+
+```r
+ggplot(mpg, aes(x=displ,y=hwy))+
+  geom_point(color="darkblue")
+```
+
+--
+
+![](Introduction-to-ggplot2-2019_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+
+---
+# Aesthetic fun
+
+You probably want to know what kind of colors are even available don't you?
+
+See [this link](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)!
+
+You can also make custom colors by utililizing the rgb function. 
+Like this:  `rgb(1,1,0)`
+
+---
+# Aesthetic - Size
+
+Just like with **color**, changing the **size** attribute within the `aes()` function will map **size** to a variable in the dataset. If you just want all of the points to be bigger or smaller, then you set the size to be a constant within the geom_point() layer. 
+
+
+```r
+ggplot(mpg, aes(x=displ,y=hwy))+
+  geom_point(size=4)
+```
+
+![](Introduction-to-ggplot2-2019_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+
+---
+# Aesthetic - Size
+
+There's a variable in the dataset that's called `cyl` that represents how many cylinders the car engine has.   See if you can construct a graph that has different sized points based on this variable.   It should look like this one:
+
+![](Introduction-to-ggplot2-2019_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+
+
+---
+# Aesthetic - Themes
+
+If you're not a fan of the gray background with white lines, then you can easily change this.  `ggplot` has some built in graph themes that you may like better. Here's one: 
+
+
+```r
+ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
+  geom_point() + 
+  theme_bw() 
+```
+
+![](Introduction-to-ggplot2-2019_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+
+---
+# Aesthetic - Themes
+
+Other themes include: 
+- theme_bw()
+- theme_linedraw()
+- theme_light()
+- theme_dark()
+- theme_minimal()
+- theme_classic()
+- or, you can download other R packages that contain additional themes and/or customize individual components of the theme yourself.
+
+---
+# ggthemr dust theme
+
+
+```r
+library(ggthemr)
+ggthemr('dust')  
+ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
+  geom_point()
+```
+
+![](Introduction-to-ggplot2-2019_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+
+Also, try out flat, fresh, grape, light, lilac, pale, and solarized.
+
+---
+# Curve fitting
+
+At times, we want to show the general shape of the dataset.  The `geom_smooth()` layer will let you do that.   Add this layer to the old faithful scatterplot you made earlier. 
+
+--
+
+
+
+![](Introduction-to-ggplot2-2019_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+
+---
+# Line fitting
+
+The `geom_smooth()` layer can also fit a line (a linear model) to the data.  Just use `method = lm`  in the call. 
+
+` ... +
+  geom_smooth(method = lm)
+`
+
+---
+# Proper Labelling
+
+We can add proper labels to our graphs by adding label layers.
+
+![:scale 90%](labels.png)
+---
+class:center,middle
+
+![](Introduction-to-ggplot2-2019_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
+
+
+---
+
+
+# Try your hand at it!
+
+This graph is made using the `iris` dataset built into R.  Can you recreate it?
+
+![](Introduction-to-ggplot2-2019_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
+
+---
+class:center,middle
+# See what happens when you add a `shape = Species` aesthetic.
+
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="remark-latest.min.js"></script>
+<script src="custom.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"slideNumberFormat": ""
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

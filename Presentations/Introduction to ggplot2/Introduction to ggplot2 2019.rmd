@@ -2,7 +2,7 @@
 title: "Visualization with ggplot2"
 author: "3.1 to 3.3 of MD and 3.1 to 3.4 of R4DS"
 #author: "Anthony Tyler"
-#date: "07/25/2018 (updated: `r format(Sys.Date(),'%m/%d/%Y')`)"
+#date: "08/8/2019 (updated: `r format(Sys.Date(),'%m/%d/%Y')`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -29,29 +29,14 @@ mono_light(
   
 )
 
+library(ggthemr)
+ggthemr_reset()
+
 ```
-
-# Installing the needed packages
-
-Much of this course makes use of a special group of R packages referred to as the *tidyverse*.  The *tidyverse* is a set of packages that work in harmony with each other because they share a common design. 
-
-To install the *tidyverse* on your machine, run this command from your console. 
-
-```{r eval=FALSE}
-install.packages("tidyverse")
-```
-
-You won't need to run this command again on this machine. 
-
---
-
-Open up a new R script in your RStudio window. 
-
----
 
 # Loading the Package
 
-In order to access any of the functions, we need to first load the library into the R session.  You'll always need to do this first whenever using ggplot. 
+In order to access any of the functions, we need to first load the library into the R session.  You'll always need to do this first whenever using `ggplot`. 
 
 ```{r}
 library(ggplot2)
@@ -69,6 +54,8 @@ Use the help feature of RStudio to read about what this data set represents.
 ?mpg 
 ```
 
+---
+
 You can also use RStudio's View() function to get an idea of what is actually in this dataset. 
 
 ---
@@ -81,6 +68,8 @@ You can also use RStudio's View() function to get an idea of what is actually in
 
 ![:scale 60%](3comps.png)
 
+---
+
 To display the data values, we map variables in the data set to aesthetic properties of the geom like **size**, **color**, and **x**/**y** locations. 
 
 ---
@@ -88,14 +77,14 @@ To display the data values, we map variables in the data set to aesthetic proper
 
 Run the following command in your R Console. 
 
-```{r fig.width=8,fig.height=5,eval=FALSE}
+```{r eval=FALSE}
 ggplot(mpg, aes(x=displ,y=hwy)) +
   geom_point()
 ```
 
 --
 
-```{r fig.width=7,fig.height=5,echo=FALSE}
+```{r fig.width=8,fig.height=5,echo=FALSE}
 ggplot(mpg, aes(x=displ, y=hwy)) +
   geom_point()
 ```
@@ -144,7 +133,6 @@ Aesthetics are mappings of visual attributes of the graph to variables.  There a
 - fill
 - linetype
 - size
-- etc.
 
 ---
 # Structure of a call to ggplot
@@ -182,9 +170,9 @@ class: inverse, center, middle
 ### Construct a scatterplot of eruptions vs waiting.
 
 ---
-# Aesthetic fun
+# Aesthetic - Color
 
-We can map a 3rd dimension onto our scatterplot through use of **color**.
+We can map a 3rd dimension onto our scatterplot through use of the **color** attribute.
 
 ```{r fig.width=8,fig.height=5, eval=FALSE}
 ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
@@ -193,23 +181,13 @@ ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
 
 --
 
-```{r fig.width=8,fig.height=5,echo=FALSE}
+```{r fig.width=8,fig.height=4.5,echo=FALSE}
 ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
   geom_point()
 ```
 
 ---
-# Aesthetic fun
-
-We can alter the labeling of that color scale too. 
-```{r fig.width=8,fig.height=5}
-ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
-  geom_point() + 
-  labs(color = "Class of Vehicle")
-```
-
----
-# Aesthetic fun
+# Aesthetic - Coloring Points
 
 If you want to take the regular points and color them differently, then you can set the color inside of the geom_point() layer. 
 
@@ -220,7 +198,7 @@ ggplot(mpg, aes(x=displ,y=hwy))+
 
 --
 
-```{r fig.width=7, fig.height=4.5, echo=FALSE}
+```{r fig.width=7, fig.height=4.25, echo=FALSE}
 ggplot(mpg, aes(x=displ,y=hwy))+
   geom_point(color="darkblue")
 ```
@@ -237,11 +215,9 @@ You can also make custom colors by utililizing the rgb function.
 Like this:  `rgb(1,1,0)`
 
 ---
-# Aesthetic fun
+# Aesthetic - Size
 
-Size is another attribute that can be helpful to alter at times. 
-
-Just like with color, if you change it within the aes function, then it will map size to a variable in the dataset (you can create points with differing sizes).  If you just want all of the points to be bigger or smaller, then you can set the size to be a constant within the geom_point() layer. 
+Just like with **color**, changing the **size** attribute within the `aes()` function will map **size** to a variable in the dataset. If you just want all of the points to be bigger or smaller, then you set the size to be a constant within the geom_point() layer. 
 
 ```{r fig.width=4,fig.height=3}
 ggplot(mpg, aes(x=displ,y=hwy))+
@@ -249,18 +225,18 @@ ggplot(mpg, aes(x=displ,y=hwy))+
 ```
 
 ---
-# Aesthetic fun
+# Aesthetic - Size
 
 There's a variable in the dataset that's called `cyl` that represents how many cylinders the car engine has.   See if you can construct a graph that has different sized points based on this variable.   It should look like this one:
 
-```{r echo=FALSE, fig.width=8, fig.height=5}
+```{r echo=FALSE, fig.width=8, fig.height=4.5}
 ggplot(mpg,aes(x=displ,y=hwy,size=cyl))+
   geom_point()
 ```
 
 
 ---
-# Aesthetic fun
+# Aesthetic - Themes
 
 If you're not a fan of the gray background with white lines, then you can easily change this.  `ggplot` has some built in graph themes that you may like better. Here's one: 
 
@@ -271,7 +247,7 @@ ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
 ```
 
 ---
-# Aesthetic fun
+# Aesthetic - Themes
 
 Other themes include: 
 - theme_bw()
@@ -280,19 +256,20 @@ Other themes include:
 - theme_dark()
 - theme_minimal()
 - theme_classic()
-- or, you can download other R packages that contain additional themes and/or customize individual components of the theme yourself. 
-- One of my favorite packages for ggplot themes is called `ggthemes`.  You  can install it like you did the `tidyverse` and then utilize a number of other themes.
+- or, you can download other R packages that contain additional themes and/or customize individual components of the theme yourself.
 
 ---
-# theme_fivethirtyeight()
+# ggthemr dust theme
 
-```{r fig.width=8,fig.height=5}
-library(ggthemes)
+```{r fig.width=7,fig.height=4,warning=FALSE}
+library(ggthemr)
+ggthemr('dust')  
 ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
-  geom_point() + 
-  theme_fivethirtyeight() #<<
+  geom_point()
+
 ```
 
+Also, try out flat, fresh, grape, light, lilac, pale, and solarized.
 
 ---
 # Curve fitting
@@ -300,6 +277,12 @@ ggplot(mpg,aes(x=displ,y=hwy,color=class)) +
 At times, we want to show the general shape of the dataset.  The `geom_smooth()` layer will let you do that.   Add this layer to the old faithful scatterplot you made earlier. 
 
 --
+
+```{r echo=FALSE}
+ggthemr_reset()
+
+
+```
 
 ```{r message=F, fig.width=8,fig.height=5,echo=FALSE}
 ggplot(faithful,aes(x=eruptions,y=waiting))+
@@ -317,13 +300,33 @@ The `geom_smooth()` layer can also fit a line (a linear model) to the data.  Jus
 `
 
 ---
+# Proper Labelling
+
+We can add proper labels to our graphs by adding label layers.
+
+![:scale 90%](labels.png)
+---
+class:center,middle
+
+```{r message=F, fig.width=8,fig.height=5,echo=FALSE}
+ggplot(faithful,aes(x=eruptions,y=waiting))+
+  geom_point()+
+  geom_smooth()+ggtitle("Time between eruptions vs length of eruption") +
+  xlab("eruption time (seconds)") +
+  ylab("time between eruptions (minutes)")
+```
+
+
+---
+
+
 # Try your hand at it!
 
-This graph is made using the `iris` dataset built into R.  Perhaps you should take a `View()` of it first. 
+This graph is made using the `iris` dataset built into R.  Can you recreate it?
 
 ```{r echo=FALSE, fig.width=8,fig.height=5}
 ggplot(iris, aes(x=Sepal.Length,y=Sepal.Width,color=Species)) + geom_point(size = 4) +
-         labs(title = "Relationship between Sepal Length and Width", subtitle = "All species", x = "Sepal length (cm)", y = "Sepal Width (cm)") + theme_bw() 
+         labs(title = "Relationship between Sepal Width and Length", x = "Sepal length (cm)", y = "Sepal Width (cm)") + theme_bw() 
 
 ```
 
@@ -331,19 +334,5 @@ ggplot(iris, aes(x=Sepal.Length,y=Sepal.Width,color=Species)) + geom_point(size 
 class:center,middle
 # See what happens when you add a `shape = Species` aesthetic.
 
-
----
-# Adding labeling
-
-Using the `labs()` function we can add a layer of labels.
-
-```{r fig.width = 4,fig.height=3}
-ggplot(faithful,aes(x=eruptions,y=waiting)) + 
-  geom_point() +
-   labs(x="Eruption time in minutes",
-       y="Time between eruptions in minutes",
-       title="Eruption Time vs Waiting time (in minutes)", 
-       caption="based on data from Yellowstone National Park, Wyoming, USA")
-```
 
 ---

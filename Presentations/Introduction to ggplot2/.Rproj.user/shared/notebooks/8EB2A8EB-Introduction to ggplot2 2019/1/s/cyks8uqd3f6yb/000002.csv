@@ -1,0 +1,14 @@
+"0","ggthemr_palette()
+"
+"2","Error in sapply(swatch, unname_colour) : 
+  argument ""swatch"" is missing, with no default
+"
+"2","In addition: "
+"2","Warning messages:
+"
+"2","1: New theme missing the following elements: axis.ticks.length.x, axis.ticks.length.x.top, axis.ticks.length.x.bottom, axis.ticks.length.y, axis.ticks.length.y.left, axis.ticks.length.y.right 
+"
+"2","2: New theme missing the following elements: axis.ticks.length.x, axis.ticks.length.x.top, axis.ticks.length.x.bottom, axis.ticks.length.y, axis.ticks.length.y.left, axis.ticks.length.y.right 
+"
+"2","3: New theme missing the following elements: axis.ticks.length.x, axis.ticks.length.x.top, axis.ticks.length.x.bottom, axis.ticks.length.y, axis.ticks.length.y.left, axis.ticks.length.y.right 
+"

@@ -6,31 +6,15 @@ author: "3.1 to 3.3 of MD and 3.1 to 3.4 of R4DS"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: xaringan-themer.css
-    
+    css: ["default","default-fonts","my_theme.css"]
+    #css: ["default"] #,"tamu"]
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-      slideNumberFormat: ""
       beforeInit: "custom.js"
     chakra: "remark-latest.min.js"
 ---
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-
-mono_light(
-  base_color = "#1c5253",
-  header_font_google = google_font("Josefin Sans"),
-  text_font_google   = google_font("Montserrat", "300", "300i"),
-  code_font_google   = google_font("Droid Mono"),
-  text_font_size = "1.75em",
-  header_h1_font_size="1.5em"
-  
-)
-
-```
-
 # Installing the needed packages
 
 Much of this course makes use of a special group of R packages referred to as the *tidyverse*.  The *tidyverse* is a set of packages that work in harmony with each other because they share a common design. 
@@ -48,7 +32,6 @@ You won't need to run this command again on this machine.
 Open up a new R script in your RStudio window. 
 
 ---
-
 # Loading the Package
 
 In order to access any of the functions, we need to first load the library into the R session.  You'll always need to do this first whenever using ggplot. 
@@ -179,7 +162,21 @@ class: inverse, center, middle
 
 ### R has a built-in dataset by the name of `faithful`.  View the help file description of the dataset, and use the View() function to inspect it. 
 
-### Construct a scatterplot of eruptions vs waiting.
+### Construct a scatterplot of eruptions vs waiting
+
+---
+# Adding labeling
+
+Using the `labs()` function we can add a layer of labels.
+
+```{r fig.width = 4,fig.height=3}
+ggplot(faithful,aes(x=eruptions,y=waiting)) + 
+  geom_point() +
+   labs(x="Eruption time in minutes",
+       y="Time between eruptions in minutes",
+       title="Eruption Time vs Waiting time (in minutes)", 
+       caption="based on data from Yellowstone National Park, Wyoming, USA")
+```
 
 ---
 # Aesthetic fun
@@ -332,18 +329,3 @@ class:center,middle
 # See what happens when you add a `shape = Species` aesthetic.
 
 
----
-# Adding labeling
-
-Using the `labs()` function we can add a layer of labels.
-
-```{r fig.width = 4,fig.height=3}
-ggplot(faithful,aes(x=eruptions,y=waiting)) + 
-  geom_point() +
-   labs(x="Eruption time in minutes",
-       y="Time between eruptions in minutes",
-       title="Eruption Time vs Waiting time (in minutes)", 
-       caption="based on data from Yellowstone National Park, Wyoming, USA")
-```
-
----

@@ -31,3 +31,7 @@ class: inverse, middle, center
 
 # RStudio 101
 
+---
+class: middle, center
+# To learn more about the RStudio IDE, you can go through [this DataCamp tutorial](https://campus.datacamp.com/courses/working-with-the-rstudio-ide-part-1/orientation?ex=1). 
+

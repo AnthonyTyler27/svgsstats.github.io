@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1565228960422.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BAAA2DA6",
+    "lastKnownWriteTime" : 1565194639,
+    "last_content_update" : 1565194639,
+    "path" : "C:/Users/Anthony/OneDrive - Shenandoah Valley Governor's School/DE Statistics/1 - Data Visualization AND dplyr/1 - Introduction to RStudio/Introduction to RStudio.rmd",
+    "project_path" : "Introduction to RStudio.rmd",
+    "properties" : {
+        "cursorPosition" : "7,28",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,294 @@
+---
+title: "Single Quantitative Variables: Constructing and Interpreting"
+author: "3.4, 3.5, 3.7, and 3.8 in MD"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "custom.js"
+    chakra: "remark-latest.min.js"
+---
+class: inverse,center,middle
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+
+mono_light(
+  base_color = "#002244",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Droid Mono"),
+  text_font_size = "1.75em",
+  header_h1_font_size="1.5em"
+  
+)
+
+```
+
+
+# Load the <b>*Single Quantitative Variable - Tutorial*</b> Project on RStudio.Cloud
+
+---
+# Foreign-born Population
+
+```{r message=FALSE,echo=FALSE}
+library(ggplot2)
+library(readr)
+state_foreign_born <- read_csv("state_foreign_born.csv")
+```
+
+```{r eval=FALSE}
+  head(state_foreign_born)
+```
+
+```{r echo=FALSE,results="asis"}
+  DT::datatable(state_foreign_born,
+                fillContainer = FALSE, 
+                options = list(pageLength = 5))
+```
+
+
+---
+.center[
+```{r fig.width=10, fig.height=8, echo=FALSE}
+thePlot <- ggplot(state_foreign_born, aes(x=percent_foreign_born)) +
+  geom_histogram(breaks=seq(0,30,5),color="white") + 
+  labs(x="Percentage of People Born in a Foreign Country",
+       title="Foreign Born Population")
+thePlot
+```
+]
+---
+# Describing Distributions
+
+The purpose of a graph is to help us gain insight about the 
+underlying data.  When looking at graphs of univariate datasets,
+we should consider four main features:
+- Shape
+- Outliers
+- Center
+- Spread
+
+--
+
+### Don't forget your SOCS!
+
+### ALWAYS describe characteristics in context
+
+---
+class: center,inverse,middle
+
+<span style="font-size:600%">
+<b>Context!</b>
+</span>
+
+---
+# Shape
+
+- Symmetric
+
+  Can you fold it along a vertical line and have both edges match roughly?
+  
+--
+
+- Skewed and direction of skewness
+
+  The thinner ends of a distribution are called the **tails**.  If one tail stretches out further than the other, it is said to be skewed in the direction of the longer tail. 
+  
+---
+# Approximately Symmetric
+
+```{r echo=FALSE,fig.width=8, fig.height=6}
+df <- tibble::data_frame(x=rnorm(1000,50,5))
+ggplot(df, aes(x=x))+geom_histogram(bins=8,color="white")
+```
+
+---
+# Skewed Left/Right
+
+.pull-left[
+```{r echo=FALSE}
+df <- tibble::data_frame(x=rgeom(n=1000,p=1/8))
+ggplot(df, aes(x=x))+
+  geom_histogram(bins=8,color="white")+
+  ggtitle("Skewed Right")+
+  theme(plot.title=element_text(size=22))
+```
+]
+
+.pull-right[
+```{r echo=FALSE}
+df <- tibble::data_frame(x=100-rgeom(n=1000,p=1/20))
+ggplot(df, aes(x=x))+
+  geom_histogram(bins=8,color="white")+
+  ggtitle("Skewed Left")+
+  theme(plot.title=element_text(size=22))
+```
+]
+
+---
+# Shape - Skew/Symmetry? 
+
+How would you describe the percentage of foreign born citizens dataset in terms of skew/symmetry?
+
+.center[
+```{r echo=FALSE, fig.width=7, fig.height=5}
+thePlot
+```
+]
+---
+# Shape - Modality
+
+Is there a single central peak or several separated peaks?   You should identify the peaks (modes) and the location of the peaks.
+
+.pull-left[
+```{r echo=FALSE}
+df <- runif(500,10,90)
+df <- c(df,rnorm(300,40,5))
+df <- tibble::data_frame(x=df)
+ggplot(df,aes(x=x)) + 
+  geom_histogram(breaks=seq(10,90,5),color="white") + 
+  scale_x_continuous(breaks=seq(0,100,10)) +
+  ggtitle("Single peak/unimodal") +
+  theme(plot.title=element_text(size=22))
+```
+]
+
+.pull-right[
+```{r echo=FALSE}
+df <- runif(500,10,90)
+df <- c(df,rnorm(300,30,3))
+df <- c(df,rnorm(150,70,2))
+df <- tibble::data_frame(x=df)
+ggplot(df,aes(x=x)) + 
+  geom_histogram(breaks=seq(10,90,5),color="white") + 
+  scale_x_continuous(breaks=seq(0,100,10)) +
+  ggtitle("Bimodal") +
+  theme(plot.title=element_text(size=22))
+```
+]
+---
+# Shape - Modality 
+
+Is there a single central peak or several separated peaks?  You should identify the location of them. 
+
+.center[
+```{r echo=FALSE, fig.width=7, fig.height=5}
+thePlot
+```
+]
+---
+# Outliers
+
+### Do any unusual features stick out? 
+- Are there unusual values? 
+  Values that are unsusually high or low. 
+  
+- Gaps in the data?
+
+---
+# Center
+
+Tell numerically where the center of the data is. 
+
+Common measurements of center are: 
+- Mean (symbolized with either a $\mu$ for population mean or $\overline x$ for a sample mean)
+- Median
+- Mode (location of peaks)
+
+---
+# Spread
+Tell (numerically) how spread out the data is.  
+
+Are values tightly clustered around the center or spread out? 
+- Standard deviation – “average“ distance between the data points and the mean
+- Inter-Quartile Range (IQR) = range of the middle 50% of the data = Q3 – Q1
+- Range = maximum – minimum (should exclude outliers if there are any)
+
+---
+# Describe the Distribution
+
+```{r fig.height=4,fig.width=6, echo=FALSE}
+thePlot
+```
+
+---
+class:inverse,center,middle
+
+# Construct a histogram of the variable eruptions from the *faithful* dataset, and describe the distribution.
+
+---
+class: center,middle
+```{r echo=FALSE, fig.width=10,fig.height=8}
+ggplot(faithful,aes(x=eruptions,y=..density..)) + 
+  geom_histogram(color="white",bins=14)
+```
+
+---
+class:center,middle
+```{r echo=FALSE, fig.width=10, fig.height=8}
+ggplot(faithful,aes(x=eruptions,y=..density..)) + 
+  geom_histogram(color="white",bins=14) +
+  geom_density(fill="darkred",alpha=0.5)
+```
+
+---
+# Boxplots
+
+A boxplot of old faithful eruption times is given below.  What characteristics of the dataset are easier to see on the boxplot versus the histogram?
+
+.pull-left[
+```{r fig.width=6,fig.height=4, echo=FALSE}
+ggplot(faithful,aes(y=eruptions)) +
+  geom_boxplot() +
+  xlim(-1,1)
+```
+]
+.pull-right[
+```{r fig.width=6,fig.height=4, echo=FALSE}
+ggplot(faithful,aes(x=eruptions)) +
+  geom_histogram(color="white",bins=14)
+```
+]
+
+---
+# 5 Number Summary
+
+A boxplot is a visual way of viewing a dataset's **5-number summary**.  The 5 numbers are: 
+- minimum
+- quartile 1
+- median
+- quartile 3
+- maximum
+
+--
+
+The boxplot also shows outliers represented as points.
+
+---
+# What makes an outlier?
+Many times, the general rule of thumb used is: 
+
+$$Q3 + 1.5 \cdot IQR = \text{maximum value that isn't an outlier}$$
+
+and
+
+$$Q1 - 1.5 \cdot IQR = \text{minimum value that isn't an outlier}$$
+
+---
+# Note on Comparing Distributions
+
+- Discuss SOCS when comparing distributions of a quantitative variable. 
+
+--
+
+- Use comparative words (more than, less than, approximately the same as).
+
+--
+
+- Always address characteristics <u>in context</u>!
+
+

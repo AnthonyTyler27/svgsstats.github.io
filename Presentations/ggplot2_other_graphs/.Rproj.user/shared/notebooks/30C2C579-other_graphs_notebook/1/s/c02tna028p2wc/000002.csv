@@ -1,4 +1,0 @@
-"0","```r
-ggplot(mpg, aes(x=class,y=hwy)) +
-  geom_boxplot()
-```"

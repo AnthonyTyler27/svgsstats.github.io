@@ -6,3 +6,4 @@ install.packages(c("tidyverse","babynames","gganimate","gapminder",
 remotes::install_github("andrewpbray/oilabs")
 devtools::install_github("daranzolin/ViewPipeSteps")
 remotes::install_github("ThinkR-open/remedy")
+devtools::install_github('cttobin/ggthemr')

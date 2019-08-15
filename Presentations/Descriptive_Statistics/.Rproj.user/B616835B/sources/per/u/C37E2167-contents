@@ -1,0 +1,10 @@
+library(tidyr)
+library(dplyr)
+# NOT RUN {
+df <- tibble::tibble(x = c("Less than high school", "High school graduate","Some college","Bachelor's degree","Advanced degree"), age25_34 = c(4474,11546,7376,8563,3374)) %>% mutate(age="Age 25 through 34")
+df2 <- tibble::tibble(x=c("Less than high school", "High school graduate","Some college","Bachelor's degree","Advanced degree"),age65_74=c(4695,6649,2528,1849,1266)) %>% mutate(age="Age 65 through 74")
+
+a1<-uncount(df,weights=age25_34)
+a2<-uncount(df2,weights=age65_74)
+
+new <- bind_rows(a1,a2)

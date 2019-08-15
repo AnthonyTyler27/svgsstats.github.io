@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1565893562998.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "20CBDD42",
+    "lastKnownWriteTime" : 1565897418,
+    "last_content_update" : 1565897418174,
+    "path" : "C:/Users/tylera/OneDrive - Shenandoah Valley Governor's School/DE Statistics/1 - Data Visualization AND dplyr/Descriptive Statistics/Descriptive Statistics.Rmd",
+    "project_path" : "Descriptive Statistics.Rmd",
+    "properties" : {
+        "cursorPosition" : "231,0",
+        "scrollLine" : "213"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

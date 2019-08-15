@@ -1,6 +1,0 @@
-"0","df <- runif(100000,5,100)"
-"0","theRanges <- c()"
-"0","for (each in seq(1,10000,1)){"
-"0","  subdf <- sample(df,20)"
-"0","  theRanges <- c(theRanges,max(subdf)-min(subdf))"
-"0","}"

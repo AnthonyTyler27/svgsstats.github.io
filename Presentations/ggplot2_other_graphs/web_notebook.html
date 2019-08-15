@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Making Graphics</title>
+
+<script src="web_notebook_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="web_notebook_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="web_notebook_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="web_notebook_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="web_notebook_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="web_notebook_files/navigation-1.1/tabsets.js"></script>
+<link href="web_notebook_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="web_notebook_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Making Graphics</h1>
+
+</div>
+
+
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<p>In your session, there is already a dataset loaded that is entitled <code>state_foreign_born</code>. This is the same dataset we looked at in class that has the percentage of people from each state that were born in a foreign country.</p>
+<div id="making-a-histogram" class="section level1">
+<h1>Making a Histogram</h1>
+<p>While we already looked at describing histograms in class, we haven’t yet looked at how to create them. Use your <code>R Cheatsheet/Manual</code> to construct a histogram of the dataset. The variable is entitled <em>percent_foreign_born</em> You only need to supply an aesthetic mapping for the x-axis.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkoZHBseXIpXG5zb3VyY2UoXCJodHRwczovL3N2Z3NzdGF0cy5naXRodWIuaW8vY2xhc3MuUlwiKSIsInNhbXBsZSI6IiMgUHV0IGNvZGUgaGVyZVxuc3RhdGVfZm9yZWlnbl9ib3JuICU+JSBcbiAgZ2dwbG90KCAgICAgICAgICAgKSArIFxuICBnZW9tX19fX19fX19fX19fKCkiLCJzb2x1dGlvbiI6InN0YXRlX2ZvcmVpZ25fYm9ybiAlPiUgZ2dwbG90KGFlcyh4PXBlcmNlbnRfZm9yZWlnbl9ib3JuKSkgKyBcbiAgZ2VvbV9oaXN0b2dyYW0oKSIsInNjdCI6IiMgUHV0IGNvZGUgaGVyZVxudGVzdF9lcnJvcigpXG50ZXN0X2Z1bmN0aW9uKFwiZ2dwbG90XCIsYXJncz1jKFwiZGF0YVwiLFwibWFwcGluZ1wiKSxpbmNvcnJlY3RfbXNnID0gXCJOb3QgcXVpdGUhXCIpXG50ZXN0X2Z1bmN0aW9uKFwiZ2VvbV9oaXN0b2dyYW1cIixpbmNvcnJlY3RfbXNnID0gXCJEb24ndCBmb3JnZXQgdG8gYWRkIHRoZSBoaXN0b2dyYW0gZ2VvbSFcIilcblxuc3VjY2Vzc19tc2coXCJOYWlsZWQgaXQhXCIpIn0=
+</div>
+<div id="altering-bin-numbers" class="section level2">
+<h2>Altering bin numbers</h2>
+<p><code>ggplot</code> by default will separate your data into 30 bins. You can customize this by setting the <code>bins=</code> argument inside of your geom_histogram() layer. Construct a histogram with 8 bins below.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkoZHBseXIpXG5zb3VyY2UoXCJodHRwczovL3N2Z3NzdGF0cy5naXRodWIuaW8vY2xhc3MuUlwiKSIsInNhbXBsZSI6IiMgTWFrZSB0aGUgaGlzdG9ncmFtIGJlbG93Iiwic29sdXRpb24iOiIjIE1ha2UgdGhlIGhpc3RvZ3JhbSBiZWxvd1xuc3RhdGVfZm9yZWlnbl9ib3JuICU+JSBnZ3Bsb3QoYWVzKHg9cGVyY2VudF9mb3JlaWduX2Jvcm4pKSArIFxuICBnZW9tX2hpc3RvZ3JhbShiaW5zPTgpIiwic2N0IjoiIyBQdXQgY29kZSBoZXJlXG50ZXN0X2Vycm9yKClcbnRlc3RfZnVuY3Rpb24oXCJnZ3Bsb3RcIixhcmdzPWMoXCJkYXRhXCIsXCJtYXBwaW5nXCIpKVxudGVzdF9mdW5jdGlvbihcImdlb21faGlzdG9ncmFtXCIsYXJncz1jKFwiYmluc1wiKSlcblxuc3VjY2Vzc19tc2coXCJHcmVhdCBqb2IhXCIpIn0=
+</div>
+</div>
+<div id="altering-bin-width" class="section level2">
+<h2>Altering Bin Width</h2>
+<p>While setting the number of bins we desire is the typical method we will choose, it is sometimes useful to provide a width of each bin instead. You can do this with the <code>binwidth=</code> argument. Get rid of your <code>bins=</code> argument and construct a histogram with a binwidth value of 5.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkoZHBseXIpXG5zb3VyY2UoXCJodHRwczovL3N2Z3NzdGF0cy5naXRodWIuaW8vY2xhc3MuUlwiKSIsInNhbXBsZSI6IiMgTWFrZSB0aGUgaGlzdG9ncmFtIHdpdGggYmlud2lkdGggb2YgNSBiZWxvdyIsInNvbHV0aW9uIjoic3RhdGVfZm9yZWlnbl9ib3JuICU+JSBcbiAgZ2dwbG90KGFlcyh4PXBlcmNlbnRfZm9yZWlnbl9ib3JuKSkrXG4gIGdlb21faGlzdG9ncmFtKGJpbndpZHRoPTUpIiwic2N0IjoiIyBQdXQgY29kZSBoZXJlXG50ZXN0X2Vycm9yKClcbnRlc3RfZnVuY3Rpb24oXCJnZ3Bsb3RcIixhcmdzPWMoXCJkYXRhXCIsXCJtYXBwaW5nXCIpKVxudGVzdF9mdW5jdGlvbihcImdlb21faGlzdG9ncmFtXCIsYXJncz1jKFwiYmlud2lkdGhcIikpXG5cbnN1Y2Nlc3NfbXNnKFwiWW91J3JlIGdldHRpbmcgZ29vZCBhdCB0aGlzIVwiKSJ9
+</div>
+</div>
+<div id="setting-up-where-the-breaks-occur" class="section level2">
+<h2>Setting up where the breaks occur</h2>
+<p>One last method that can be used to create bins is to use the <code>breaks=</code> argument. This will allow us to specifically provide where we want to break our bins.</p>
+<p>The breaks argument takes a vector input (more on that later). For right now, we’ll just use the <code>seq(start,end,skip)</code> function to do this. Run the code below to see how it works.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkoZHBseXIpXG5zb3VyY2UoXCJodHRwczovL3N2Z3NzdGF0cy5naXRodWIuaW8vY2xhc3MuUlwiKSIsInNhbXBsZSI6InN0YXRlX2ZvcmVpZ25fYm9ybiAlPiUgXG4gIGdncGxvdChhZXMoeD1wZXJjZW50X2ZvcmVpZ25fYm9ybikpK1xuICBnZW9tX2hpc3RvZ3JhbShicmVha3M9c2VxKDAsMzAsNCkpIn0=
+</div>
+<p>The <code>seq(0,30,4)</code> command simply spits out a list of numbers starting at 0 and ending at 30 while skipping every 4, so it would be <code>0,4,8,12,etc</code>.</p>
+<p>It’s an <em>important</em> note that histograms can look differently (sometimes drastically different) depending on the choice of bins. Choose wisely.</p>
+</div>
+<div id="density-curve" class="section level2">
+<h2>Density Curve</h2>
+<p>One way to get around this drawback of the histograms is utilizing a <em>density function</em> instead. To see a density function, get rid of the geom_histogram() layer and add a geom_density() layer instead.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkoZHBseXIpXG5zb3VyY2UoXCJodHRwczovL3N2Z3NzdGF0cy5naXRodWIuaW8vY2xhc3MuUlwiKSIsInNhbXBsZSI6InN0YXRlX2ZvcmVpZ25fYm9ybiAlPiUgZ2dwbG90KGFlcyh4PXBlcmNlbnRfZm9yZWlnbl9ib3JuKSkgKyBnZW9tXyIsInNvbHV0aW9uIjoic3RhdGVfZm9yZWlnbl9ib3JuICU+JSBnZ3Bsb3QoYWVzKHg9cGVyY2VudF9mb3JlaWduX2Jvcm4pKSArIGdlb21fZGVuc2l0eSgpIiwic2N0IjoiIyBQdXQgY29kZSBoZXJlXG50ZXN0X2Vycm9yKClcbnRlc3RfZnVuY3Rpb24oXCJnZ3Bsb3RcIixhcmdzPWMoXCJkYXRhXCIsXCJtYXBwaW5nXCIpKVxudGVzdF9mdW5jdGlvbihcImdlb21fZGVuc2l0eVwiKVxuXG5zdWNjZXNzX21zZyhcIk5pY2UhXCIpIn0=
+</div>
+<p>This eliminates the drawback of the histogram, but may be a little more difficult for a layperson to understand.</p>
+</div>
+<div id="coloring-the-histogram" class="section level2">
+<h2>Coloring the histogram</h2>
+<p>For right now, let’s stick with the histogram. The default look of the histogram is a bit bland.</p>
+<p>We can edit the colors of the histogram by referencing the <code>color=</code> and <code>fill=</code> arguments. See if you can make a histogram with a white outline and a dark red fill. Edit the chunk appropriately below.</p>
+<strong>hmmm… do I do this in the aesthetic function or in the geom_histogram() function?</strong>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkoZHBseXIpXG5zb3VyY2UoXCJodHRwczovL3N2Z3NzdGF0cy5naXRodWIuaW8vY2xhc3MuUlwiKSIsInNhbXBsZSI6ImdncGxvdChzdGF0ZV9mb3JlaWduX2Jvcm4sIGFlcyh4PXBlcmNlbnRfZm9yZWlnbl9ib3JuKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShicmVha3M9c2VxKDAsMzAsNCkpIiwic29sdXRpb24iOiJnZ3Bsb3Qoc3RhdGVfZm9yZWlnbl9ib3JuLCBhZXMoeD1wZXJjZW50X2ZvcmVpZ25fYm9ybikpICtcbiAgZ2VvbV9oaXN0b2dyYW0oYnJlYWtzPXNlcSgwLDMwLDQpLGNvbG9yPVwid2hpdGVcIixmaWxsPVwiZGFya3JlZFwiKSIsInNjdCI6IiMgUHV0IGNvZGUgaGVyZVxudGVzdF9lcnJvcigpXG50ZXN0X2Z1bmN0aW9uKFwiZ2dwbG90XCIsYXJncz1jKFwiZGF0YVwiLFwibWFwcGluZ1wiKSlcbnRlc3RfZnVuY3Rpb24oXCJnZW9tX2hpc3RvZ3JhbVwiLGFyZ3MoYyhcImNvbG9yXCIsXCJmaWxsXCIpKSlcblxuc3VjY2Vzc19tc2coXCJZb3UgYXJlIGEgY29sb3IgcHJvZmVzc2lvbmFsXCIpIn0=
+</div>
+<p>The y-axis on the histogram is by default <code>count</code> meaning that we can see the actual raw number of elements in the dataset that fall in each bin. It is useful at times to have the y-axis be <code>density</code> which will better allow ut to see the <em>percentage</em> of the dataset that falls in each bin. To do this add the following in your aes() function call: <code>y=..density..</code></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkoZHBseXIpXG5zb3VyY2UoXCJodHRwczovL3N2Z3NzdGF0cy5naXRodWIuaW8vY2xhc3MuUlwiKSIsInNhbXBsZSI6ImdncGxvdChzdGF0ZV9mb3JlaWduX2Jvcm4sIGFlcyh4PXBlcmNlbnRfZm9yZWlnbl9ib3JuLHk9Li5kZW5zaXR5Li4pKSArXG4gIGdlb21faGlzdG9ncmFtKGJyZWFrcz1zZXEoMCwzMCw0KSkifQ==
+</div>
+</div>
+</div>
+<div id="boxplots" class="section level1">
+<h1>Boxplots</h1>
+<p>A boxplot (perhaps known as a box-and-whisker plot to you) is another useful graphic that <em>us</em> statisticians make use of sometimes. In ggplot, boxplots are always oriented vertically, so the variable we wish to construct a boxplot of should be mapped to the y-variable in the <code>aes()</code> function. If you have a single variable that you are graphing a boxplot of, then you should provide the name of the x-axis in the x aesthetic. You could leave this empty by simply stating x = "".</p>
+Make a boxplot of the <code>state_foreign_born</code> dataset below. Reference your <strong>cheat sheets</strong> as needed.
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImxpYnJhcnkoZ2dwbG90MilcbmxpYnJhcnkoZHBseXIpXG5zb3VyY2UoXCJodHRwczovL3N2Z3NzdGF0cy5naXRodWIuaW8vY2xhc3MuUlwiKSIsInNhbXBsZSI6IiMgRG8gYm94cGxvdCBiZWxvdyIsInNvbHV0aW9uIjoiIyBEbyBib3hwbG90IGJlbG93XG5zdGF0ZV9mb3JlaWduX2Jvcm4gJT4lIGdncGxvdChhZXMoeD1cIlwiLHk9cGVyY2VudF9mb3JlaWduX2Jvcm4pKStnZW9tX2JveHBsb3QoKSIsInNjdCI6IiMgUHV0IGNvZGUgaGVyZVxudGVzdF9lcnJvcigpXG50ZXN0X2Z1bmN0aW9uKFwiZ2dwbG90XCIsYXJncz1jKFwiZGF0YVwiLFwibWFwcGluZ1wiKSlcbnRlc3RfZnVuY3Rpb24oXCJnZW9tX2JveHBsb3RcIilcblxuc3VjY2Vzc19tc2coXCJZb3UgYXJlIGEgcHJvZmVzc2lvbmFsIHZpc3VhbGl6YXRpb24gbWFrZXIuXCIpIn0=
+</div>
+<p>One really useful part of a boxplot is that it allows us to compare multiple datasets to each other. For instance, if we wanted to quickly compare the gas mileage of the different <code>class</code> vehicles in the <code>mpg</code> dataset, we can do that with the boxplot with the code below.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGdncGxvdDIpXG5saWJyYXJ5KGRwbHlyKVxuXG5tcGcgJT4lIFxuICBnZ3Bsb3QoYWVzKHg9Y2xhc3MseT1od3kpKSArXG4gIGdlb21fYm94cGxvdCgpIn0=
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

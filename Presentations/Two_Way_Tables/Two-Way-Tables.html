@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
     <title>Contingency Tables</title>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta name="author" content="1.7 in OI" />
-    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
-    <link rel="stylesheet" href="my_theme.css" type="text/css" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -18,21 +16,22 @@ class: center, middle, inverse, title-slide
 
 ---
 
+
 # Objectives
 
-### - Construct and interpret contingency tables
+- Construct and interpret contingency tables
 
-### - Describe relationships between categorcial variables
+- Describe relationships between categorcial variables
 ---
-# What is a contingency table?
+class: center, middle, inverse
 
-## A **contingency** tables describes two categorical variables, organizing counts according to a row variable and a column variable.
+# A **contingency** tables describes two categorical variables, organizing counts according to a row variable and a column variable.
 ---
 
 # USA Census at School data
 
 ### We are going to create a table to help us analyze the relationship between student responses to the gender question and the superpower question. 
-
+________________________________________
 Which of the following superpowers would you most like to have?
 .pull-left[
 - Invisibility
@@ -44,14 +43,16 @@ Which of the following superpowers would you most like to have?
 - Fly
 ]
 ---
-# Constructing the Contingency Table
+# Contingency Table Construction
 
-We will use a package called `janitor` to contruct the contingency table.  You will need to install it using the `install.packages("janitor")` call and then load it by using the `library()` function.  Or, it's already installed if you're using the SVGS Workspace on rstudio.cloud. 
+We will use a package called `janitor` to contruct the contingency table.  You will need to load it by using the `library()` function.
 
 
 ```r
 library(janitor) 
 ```
+
+
 
 The basic format of a call is:
 
@@ -70,18 +71,18 @@ dataset %&gt;% tabyl(var1,var2)
 ---
 # Let's do it!
 
-Since we want the relationship between `Superpower` and `Gender`, we would simply run: 
+Since we want the relationship between `superpower` and `gender`, we would simply run: 
 
 
 ```r
 at_school %&gt;% 
-  tabyl(Superpower,Gender)
+  tabyl(superpower,gender)
 ```
 
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; Superpower &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; superpower &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Female &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Male &lt;/th&gt;
   &lt;/tr&gt;
@@ -123,11 +124,11 @@ There's an option for that too.
 
 ```r
 at_school %&gt;% 
-  tabyl(Superpower,Gender) %&gt;% adorn_totals(where=c("row","col"))
+  tabyl(superpower,gender) %&gt;% adorn_totals(where=c("row","col"))
 ```
 
 ```
-##      Superpower Female Male Total
+##      superpower Female Male Total
 ##             Fly     64   49   113
 ##     Freeze time     49   64   113
 ##    Invisibility     40   26    66
@@ -135,13 +136,8 @@ at_school %&gt;%
 ##       Telepathy     70   41   111
 ##           Total    229  207   436
 ```
-The `adorn_total()` function takes an optional argument `where=` with values `"row"`, `"col"`, or `c("row","col")`.  See the help file for more info. 
 
-
-```r
-?adorn_totals
-```
-
+The `adorn_total()` function takes an optional argument `where=` with values `"row"`, `"col"`, or `c("row","col")`.  
 ---
 # Percentages
 
@@ -150,12 +146,12 @@ Very often it can hard to see relationships in a contingency table when we're lo
 
 ```r
 at_school %&gt;% 
-  tabyl(Superpower,Gender) %&gt;% 
+  tabyl(superpower,gender) %&gt;% 
   adorn_percentages()
 ```
 
 ```
-##      Superpower    Female      Male
+##      superpower    Female      Male
 ##             Fly 0.5663717 0.4336283
 ##     Freeze time 0.4336283 0.5663717
 ##    Invisibility 0.6060606 0.3939394
@@ -171,12 +167,12 @@ Very often it can hard to see relationships in a contingency table when we're lo
 
 ```r
 at_school %&gt;% 
-  tabyl(Superpower,Gender) %&gt;% 
+  tabyl(superpower,gender) %&gt;% 
   adorn_percentages(denominator="col")
 ```
 
 ```
-##      Superpower     Female      Male
+##      superpower     Female      Male
 ##             Fly 0.27947598 0.2367150
 ##     Freeze time 0.21397380 0.3091787
 ##    Invisibility 0.17467249 0.1256039
@@ -192,12 +188,12 @@ Very often it can hard to see relationships in a contingency table when we're lo
 
 ```r
 at_school %&gt;% 
-  tabyl(Superpower,Gender) %&gt;% 
+  tabyl(superpower,gender) %&gt;% 
   adorn_percentages(denominator="all") 
 ```
 
 ```
-##      Superpower     Female       Male
+##      superpower     Female       Male
 ##             Fly 0.14678899 0.11238532
 ##     Freeze time 0.11238532 0.14678899
 ##    Invisibility 0.09174312 0.05963303
@@ -207,29 +203,29 @@ at_school %&gt;%
 ---
 # Creating Bar Graphs
 
-The `geom_bar` geom is the main tool for creating bar graphs. 
+The `geom_bar` geom will create bar graphs. 
 
 
 ```r
-at_school %&gt;% ggplot(aes(x=Superpower))+
+at_school %&gt;% ggplot(aes(x=superpower))+
   geom_bar()
 ```
 
-![](Two_Way_Tables_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+![](Two-Way-Tables_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
 ---
 # Horizontal Bar Graphs
 
-They can be easier to read when viewed horizontally at times. 
+They can be easier to read when viewed horizontally.
 
 
 ```r
 at_school %&gt;% 
-  ggplot(aes(x=Superpower))+
+  ggplot(aes(x=superpower))+
   geom_bar()+
   coord_flip()
 ```
 
-![](Two_Way_Tables_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+![](Two-Way-Tables_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 
 ---
 # Stacked Bar Graphs
@@ -238,48 +234,39 @@ Stacked bar graphs are useful tools for seeing relationships between categorical
 
 
 ```r
-at_school %&gt;% ggplot(aes(x=Superpower,fill=Gender)) + 
+at_school %&gt;% ggplot(aes(x=superpower,fill=gender)) + 
   geom_bar()
 ```
 
-![](Two_Way_Tables_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+![](Two-Way-Tables_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
 ---
-# Stacked Bar Graph with Percentages
+# Stacked Bar Graph with %
 
 
 ```r
-at_school %&gt;% ggplot(aes(x=Superpower,fill=Gender)) + 
+at_school %&gt;% ggplot(aes(x=superpower,fill=gender)) + 
   geom_bar(position="fill") +
   labs(y="Proportion")
 ```
 
-![](Two_Way_Tables_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+![](Two-Way-Tables_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
 
 ---
 # Side-by-side Bar Graphs
 
 
 ```r
-at_school %&gt;% ggplot(aes(x=Superpower,fill=Gender)) + 
+at_school %&gt;% ggplot(aes(x=superpower,fill=gender)) + 
   geom_bar(position="dodge")
 ```
 
-![](Two_Way_Tables_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+![](Two-Way-Tables_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
 ---
 # Can you create this graph? 
 
-![](Two_Way_Tables_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
----
-# Custom Colors
-
-```r
-at_school %&gt;% ggplot(aes(x=Gender,fill=Superpower)) + 
-  geom_bar(position="dodge") + 
-  scale_fill_brewer(palette="Accent")
-```
-
-![](Two_Way_Tables_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+![](Two-Way-Tables_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
     </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="remark-latest.min.js"></script>
 <script src="custom.js"></script>
 <script>var slideshow = remark.create({
@@ -290,16 +277,57 @@ at_school %&gt;% ggplot(aes(x=Gender,fill=Superpower)) +
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
-(function() {
-  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
   if (!r) return;
   s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
   d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
 })();</script>
 
 <script>
 (function() {
-  var i, text, code, codes = document.getElementsByTagName('code');
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
   for (i = 0; i < codes.length;) {
     code = codes[i];
     if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
@@ -313,14 +341,15 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     i++;
   }
-})();
+};
+slideshow._releaseMath(document);
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
 (function () {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
   if (location.protocol !== 'file:' && /^https?:/.test(script.src))
     script.src  = script.src.replace(/^https?:/, '');
   document.getElementsByTagName('head')[0].appendChild(script);

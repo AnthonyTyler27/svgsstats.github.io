@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566230271470.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D8810408",
+    "lastKnownWriteTime" : 1566233357,
+    "last_content_update" : 1566233357598,
+    "path" : "C:/Users/tylera/OneDrive - Shenandoah Valley Governor's School/DE Statistics/1 - Data Visualization AND dplyr/6 - Two Way Tables/Two Way Tables.Rmd",
+    "project_path" : "Two Way Tables.Rmd",
+    "properties" : {
+        "cursorPosition" : "101,0",
+        "scrollLine" : "93"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

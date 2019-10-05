@@ -4,9 +4,7 @@
     <title>Things You’re Supposed to Know</title>
     <meta charset="utf-8">
     <meta name="author" content="MD 7.1.2" />
-    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https:\\svgsstats.github.io\Styles\my_theme.css" type="text/css" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -40,7 +38,7 @@ class: center, inverse
 
 --
 
-## Slope gives us **more than just direction**.  It quantifies how changes in one variable are associated with changes in another. 
+## Slope gives us *more than just direction*.  It quantifies how changes in one variable are associated with changes in another. 
 
 ---
 class: center,inverse,middle
@@ -55,7 +53,7 @@ class: center,inverse,middle
 ## A **residual** is the difference between an observed value of the response variable and the value predicted by the regression line. 
 
 
-### $$ \text{residual} = \text{observed y} - \text{predicted y} $$
+$$ \text{residual} = \text{observed y} - \text{predicted y} $$
 
 ---
 # Residual Plots
@@ -82,18 +80,18 @@ class: center,inverse,middle
 ---
 class: center, inverse,middle
 
-# The **only** tool we've used for assessing whether a particular model is appropriate is the scatterplot and the residual plot. 
+# The &lt;b&gt;only&lt;/b&gt; tool we've used for assessing whether a particular model is appropriate is the scatterplot and the residual plot. 
 
 
 ---
 # Standard deviation of the residuals
 
-### If we use a least-squares regression line to predict values of y given x, the **standard deviation of the residuals** measures the typical distance our actual y-values are from the model's predicted y values. 
+### If we use a least-squares regression line to predict values of y given x, the &lt;b&gt;standard deviation of the residuals&lt;/b&gt; measures the typical distance our actual y-values are from the model's predicted y values. 
 
 ---
 # Formula Sentence
 
-&lt;p class="border inverse white tab"&gt;Predictions of &lt;strong&gt;y-variable&lt;/strong&gt; using the model will vary from actual &lt;strong&gt;y-values&lt;/strong&gt; on average by &lt;strong&gt;standard deviation of residuals&lt;/strong&gt; units. &lt;/p&gt;
+&lt;p class="border inverse white tab"&gt;Predictions of &lt;b&gt; y-variable&lt;/b&gt; using the model will vary from actual &lt;b&gt;y-values&lt;/b&gt; on average by &lt;b&gt;standard deviation of residuals&lt;/b&gt; units. &lt;/p&gt;
 
 ---
 # The role of `\(r^2\)` in regression
@@ -104,14 +102,14 @@ class: center, inverse,middle
 
 --
 
-### `\(r^2\)`, or the **coefficient of determination**, is the percentage of variation in the values of y that are accounted for by the model.
+### `\(r^2\)`, or the &lt;b&gt;coefficient of determination&lt;/b&gt;, is the percentage of variation in the values of y that are accounted for by the model.
 
 ---
 # When interpreting `\(r^2\)`
 
 ### Say - 
 
-&lt;p class = "inverse white tab border"&gt; _____ percent of variation in the values of &lt;strong&gt;insert y variable here&lt;/strong&gt; are accounted for by the linear model.&lt;/p&gt;
+&lt;p class = "inverse white tab border"&gt; _____ percent of variation in the values of insert y variable here are accounted for by the linear model.&lt;/p&gt;
 
 ---
 # Multiple Regression
@@ -159,7 +157,7 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
 (function () {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
   if (location.protocol !== 'file:' && /^https?:/.test(script.src))
     script.src  = script.src.replace(/^https?:/, '');
   document.getElementsByTagName('head')[0].appendChild(script);
